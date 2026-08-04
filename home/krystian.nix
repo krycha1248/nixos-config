@@ -17,8 +17,14 @@
 
     jq
     fastfetch
+    kitty
+    wofi
+    waybar
+    swaybg
   ];
 
+  xdg.configFile."hypr/hyprland.conf".source =
+    ./config/hypr/hyprland.conf;
 
   # ------------------------------------------------------------
   # Git

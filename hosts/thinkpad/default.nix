@@ -1,8 +1,9 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/desktop/hyprland.nix
   ];
 
 
@@ -49,9 +50,28 @@
   # ------------------------------------------------------------
   # Plymouth
   # ------------------------------------------------------------
+
   boot.plymouth = {
     enable = true;
     theme = "bgrt";
+  };
+
+
+  # -------------------------------------------------------------
+  # Hyprland
+  # -------------------------------------------------------------
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
   };
 
   boot.consoleLogLevel = 0;
