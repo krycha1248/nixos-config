@@ -30,8 +30,8 @@
     playerctl
     mako
     libnotify
-    gparted
     thunderbird
+    google-chrome
   ];
 
   xdg.configFile."hypr/hyprland.conf".source =

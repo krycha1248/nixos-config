@@ -34,6 +34,7 @@
   };
 
   boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+  boot.loader.systemd-boot.configurationLimit = 5;
 
 
   # ------------------------------------------------------------
