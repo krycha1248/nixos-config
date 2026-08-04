@@ -1,6 +1,10 @@
-{ pkgs, ... }:
-
 {
+  pkgs,
+  ...
+}: let
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+  hyprlandSessions = "${pkgs.hyprland}/share/wayland-sessions";
+in {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -20,14 +24,25 @@
 
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprlandSessions}";
         user = "greeter";
       };
     };
   };
 
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    tuigreet
     wayland-utils
     wl-clipboard
     brightnessctl
