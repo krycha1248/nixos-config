@@ -1,13 +1,14 @@
 {
   pkgs,
   ...
-}: let
-  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-  hyprlandSessions = "${pkgs.hyprland}/share/wayland-sessions";
-in {
+}: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  programs.regreet = {
+    enable = true;
   };
 
   xdg.portal = {
@@ -24,7 +25,7 @@ in {
 
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprlandSessions}";
+        command = "${pkgs.greetd.regreet}/bin/regreet";
         user = "greeter";
       };
     };
