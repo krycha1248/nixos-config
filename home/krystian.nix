@@ -17,11 +17,19 @@
 
     jq
     fastfetch
-    kitty
     wofi
     waybar
     swaybg
     yazi
+    nerd-fonts.jetbrains-mono
+
+    fuzzel
+    foot
+    grim
+    slurp
+    playerctl
+    mako
+    libnotify
   ];
 
   xdg.configFile."hypr/hyprland.conf".source =
@@ -32,6 +40,21 @@
 
   xdg.configFile."hypr/hyprlock.conf".source =
     ./config/hypr/hyprlock.conf;
+
+  xdg.configFile."waybar/config.jsonc".source =
+    ./config/waybar/config.jsonc;
+
+  xdg.configFile."waybar/style.css".source =
+    ./config/waybar/style.css;
+
+  xdg.configFile."fuzzel/fuzzel.ini".source =
+    ./config/fuzzel/fuzzel.ini;
+
+  xdg.configFile."foot/foot.ini".source =
+    ./config/foot/foot.ini;
+
+  xdg.configFile."mako/config".source =
+    ./config/mako/config;
 
   home.activation.reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then

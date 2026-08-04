@@ -3,7 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+
     ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/power.nix
   ];
 
 
