@@ -1,0 +1,107 @@
+{ config, pkgs, ... }:
+
+{
+  # ------------------------------------------------------------
+  # Nix
+  # ------------------------------------------------------------
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.settings.auto-optimise-store = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+
+  # ------------------------------------------------------------
+  # Networking
+  # ------------------------------------------------------------
+
+  networking.networkmanager.enable = true;
+
+
+  # ------------------------------------------------------------
+  # Locale / keyboard / timezone
+  # ------------------------------------------------------------
+
+  time.timeZone = "Europe/Warsaw";
+
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  console.keyMap = "pl";
+
+
+
+  # ------------------------------------------------------------
+  # Console
+  # ------------------------------------------------------------
+
+  console = {
+    font = "ter-v24n";
+    packages = with pkgs; [
+      terminus_font
+    ];
+  };
+
+  # ------------------------------------------------------------
+  # SSH
+  # ------------------------------------------------------------
+
+  services.openssh = {
+    enable = true;
+
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+    };
+  };
+
+
+  # ------------------------------------------------------------
+  # User
+  # ------------------------------------------------------------
+
+  users.users.krystian = {
+    isNormalUser = true;
+
+    description = "Krystian";
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+  };
+
+
+  # ------------------------------------------------------------
+  # Home Manager
+  # ------------------------------------------------------------
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  home-manager.users.krystian = import ../home/krystian.nix;
+
+
+  # ------------------------------------------------------------
+  # System packages
+  # ------------------------------------------------------------
+
+  environment.systemPackages = with pkgs; [
+    sbctl
+    vim
+  ];
+
+
+  # ------------------------------------------------------------
+  # NixOS state version
+  # ------------------------------------------------------------
+
+  system.stateVersion = "26.05";
+}
