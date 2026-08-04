@@ -56,12 +56,14 @@
   xdg.configFile."mako/config".source =
     ./config/mako/config;
 
+  home.file.".local/bin/power-profile".source =
+    ./scripts/power-profile;
+
   home.activation.reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
       ${pkgs.hyprland}/bin/hyprctl reload || true
     fi
   '';
-
 
 
   # ------------------------------------------------------------

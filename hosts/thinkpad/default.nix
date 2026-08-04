@@ -6,6 +6,7 @@
 
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/power.nix
+    ../../modules/desktop/bluetooth.nix
   ];
 
 

@@ -4,8 +4,13 @@
 }
 
 window#waybar {
-    background: rgba(17, 17, 27, 0.92);
-    color: #cdd6f4;
+    background: rgba(17, 17, 27, 0.72);
+    border: none;
+    border-radius: 0;
+}
+
+#waybar {
+    background: transparent;
 }
 
 tooltip {
