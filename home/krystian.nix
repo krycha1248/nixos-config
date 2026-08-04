@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     firefox
     neovim
-    gh
 
     ripgrep
     fd
@@ -30,6 +29,18 @@
     settings = {
       user.name = "Krystian Włodek";
       user.email = "krycha1248@gmail.com";
+    };
+  };
+
+
+  # ------------------------------------------------------------
+  # GH
+  # ------------------------------------------------------------
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
     };
   };
 
