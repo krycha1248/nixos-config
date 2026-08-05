@@ -14,9 +14,6 @@
     ],
 
     "modules-right": [
-        "cpu",
-        "memory",
-        "temperature",
         "network",
         "bluetooth",
         "pulseaudio",
