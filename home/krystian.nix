@@ -60,6 +60,7 @@
       thunderbird
       teams-for-linux
       kodi
+      libreoffice-still
     ])
     ++ [
       hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default

@@ -25,7 +25,13 @@
   # Networking
   # ------------------------------------------------------------
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     22
