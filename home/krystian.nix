@@ -35,6 +35,7 @@
     google-chrome
     teams-for-linux
     kodi
+    vscode
   ];
 
   home.file = {
@@ -113,10 +114,12 @@
     };
 
     gtk3.extraConfig = {
+      "gtk-decoration-layout" = ":";
       "gtk-application-prefer-dark-theme" = true;
     };
 
     gtk4.extraConfig = {
+      "gtk-decoration-layout" = ":";
       "gtk-application-prefer-dark-theme" = true;
     };
   };
