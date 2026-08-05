@@ -20,6 +20,12 @@
       yazi
       fastfetch
 
+      # DevOps
+      terraform
+      terraform-ls
+      ansible
+      ansible-lint
+
       # Archives
       unzip
       zip
@@ -49,7 +55,7 @@
       kodi
     ])
     ++ [
-      hyprdynamicmonitors.packages.${pkgs.system}.default
+      hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
 
