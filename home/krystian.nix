@@ -36,6 +36,7 @@
     libnotify
     thunderbird
     google-chrome
+    teams-for-linux
   ];
 
   home.file = {
