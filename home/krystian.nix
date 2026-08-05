@@ -5,65 +5,63 @@
   home.homeDirectory = "/home/krystian";
 
   home.packages = with pkgs; [
-    firefox
-    neovim
+    # Browsers
+    google-chrome
 
+    # Editors
+    vscode
+
+    # CLI
     ripgrep
     fd
     fzf
+    jq
+    yazi
+    fastfetch
 
+    # Archives
     unzip
     zip
 
-    jq
-    fastfetch
+    # Wayland
     wofi
+    fuzzel
     waybar
     swaybg
-    yazi
+    grim
+    slurp
+    mako
+    libnotify
+    playerctl
+    wlogout
+
+    # Terminal
+    foot
+
+    # Fonts
     nerd-fonts.jetbrains-mono
     inter
 
-    fuzzel
-    foot
-    grim
-    slurp
-    playerctl
-    mako
-    libnotify
+    # Apps
     thunderbird
-    google-chrome
     teams-for-linux
     kodi
-    vscode
   ];
 
-  home.file = {
-    ".config/hypr" = {
-        source = ./config/hypr;
-        recursive = true;
-    };
-    ".config/wlogout" = {
-        source = ./config/wlogout;
-        recursive = true;
-    };
-    ".config/waybar" = {
-        source = ./config/waybar;
-        recursive = true;
-    };
+
+  xdg.configFile = {
+    "hypr".source = ./config/hypr;
+    "wlogout".source = ./config/wlogout;
+    "waybar".source = ./config/waybar;
+    "fuzzel/fuzzel.ini".source = ./config/fuzzel/fuzzel.ini;
+    "foot/foot.ini".source = ./config/foot/foot.ini;
+    "mako/config".source = ./config/mako/config;
   };
 
-  xdg.configFile."fuzzel/fuzzel.ini".source =
-    ./config/fuzzel/fuzzel.ini;
-
-  xdg.configFile."foot/foot.ini".source =
-    ./config/foot/foot.ini;
-
-  xdg.configFile."mako/config".source =
-    ./config/mako/config;
-
-  home.file.".local/bin/power-profile".source =
-    ./scripts/power-profile;
+  home.file.".local/bin/power-profile" = {
+    source = ./scripts/power-profile;
+    executable = true;
+  };
 
   home.activation.reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
