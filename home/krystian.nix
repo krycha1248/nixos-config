@@ -61,6 +61,7 @@
       teams-for-linux
       kodi
       libreoffice-still
+      discord
     ])
     ++ [
       hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
