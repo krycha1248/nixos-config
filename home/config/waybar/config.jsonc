@@ -145,8 +145,8 @@
     },
 
     "pulseaudio#microphone": {
-        "format": "  {format_source}",
-        "format-source": "{volume}%",
+        "format": "{format_source}",
+        "format-source": "{ volume}%",
         "format-source-muted": "  Muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
