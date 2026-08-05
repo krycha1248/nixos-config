@@ -13,6 +13,8 @@
       url = "github:nix-community/lanzaboote/cd3b03e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -20,6 +22,7 @@
     nixpkgs,
     home-manager,
     lanzaboote,
+    catppuccin,
     ...
   }:
   {
@@ -33,6 +36,9 @@
 
           home-manager.nixosModules.home-manager
           lanzaboote.nixosModules.lanzaboote
+          {
+            _module.args.catppuccin = catppuccin;
+          }
         ];
       };
     };

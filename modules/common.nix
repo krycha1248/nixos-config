@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, catppuccin, ... }:
 
 {
   # ------------------------------------------------------------
@@ -92,7 +92,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.krystian = import ../home/krystian.nix;
+  home-manager.users.krystian = { imports = [ ../home/krystian.nix catppuccin.homeModules.catppuccin ]; };
 
 
   # ------------------------------------------------------------

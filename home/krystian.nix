@@ -8,10 +8,6 @@
     firefox
     neovim
 
-    catppuccin-gtk
-    catppuccin-papirus-folders
-    catppuccin-cursors.mochaDark
-
     ripgrep
     fd
     fzf
@@ -26,6 +22,7 @@
     swaybg
     yazi
     nerd-fonts.jetbrains-mono
+    inter
 
     fuzzel
     foot
@@ -92,23 +89,25 @@
     enable = true;
   };
 
-  gtk = {
+  catppuccin = {
     enable = true;
 
-    theme = {
-      package = pkgs.catppuccin-gtk;
-      name = "Catppuccin-Mocha-Standard-Blue-Dark";
-    };
+    flavor = "mocha";
+    accent = "blue";
 
-    iconTheme = {
-      package = pkgs.catppuccin-papirus-folders;
-      name = "Papirus-Dark";
+    gtk = {
+      icon = {
+        enable = true;
+        flavor = "mocha";
+        accent = "blue";
+      };
     };
+  };
 
-    cursorTheme = {
-      package = pkgs.catppuccin-cursors.mochaDark;
-      name = "catppuccin-mocha-dark-cursors";
-      size = 24;
+  gtk = {
+    enable = true;
+    font = {
+      name = "Inter";
     };
 
     gtk3.extraConfig = {
@@ -122,6 +121,7 @@
 
   home.pointerCursor = {
     gtk.enable = true;
+
     package = pkgs.catppuccin-cursors.mochaDark;
     name = "catppuccin-mocha-dark-cursors";
     size = 24;
