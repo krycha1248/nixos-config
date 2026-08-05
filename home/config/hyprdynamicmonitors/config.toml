@@ -1,0 +1,19 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+[profiles.normal]
+config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/normal.go.tmpl"
+config_file_type = "template"
+[profiles.normal.conditions]
+
+[[profiles.normal.conditions.required_monitors]]
+description = "Chimei Innolux Corporation 0x143F"
+monitor_tag = "monitor0"

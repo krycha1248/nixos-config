@@ -15,6 +15,8 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
   };
 
   outputs = {
@@ -23,6 +25,7 @@
     home-manager,
     lanzaboote,
     catppuccin,
+    hyprdynamicmonitors,
     ...
   }:
   {
@@ -30,14 +33,23 @@
       thinkpad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
+        specialArgs = {
+          inherit hyprdynamicmonitors;
+        };
+
         modules = [
           ./hosts/thinkpad
           ./modules/common.nix
 
           home-manager.nixosModules.home-manager
           lanzaboote.nixosModules.lanzaboote
+
           {
             _module.args.catppuccin = catppuccin;
+
+            home-manager.extraSpecialArgs = {
+              inherit hyprdynamicmonitors;
+            };
           }
         ];
       };

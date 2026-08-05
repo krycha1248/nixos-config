@@ -2,6 +2,7 @@
 
 {
   services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="power-profile-ac.service"

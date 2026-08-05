@@ -1,61 +1,71 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hyprdynamicmonitors, ... }:
 
 {
   home.username = "krystian";
   home.homeDirectory = "/home/krystian";
 
-  home.packages = with pkgs; [
-    # Browsers
-    google-chrome
+  home.packages =
+    (with pkgs; [
+      # Browsers
+      google-chrome
 
-    # Editors
-    vscode
+      # Editors
+      vscode
 
-    # CLI
-    ripgrep
-    fd
-    fzf
-    jq
-    yazi
-    fastfetch
+      # CLI
+      ripgrep
+      fd
+      fzf
+      jq
+      yazi
+      fastfetch
 
-    # Archives
-    unzip
-    zip
+      # Archives
+      unzip
+      zip
 
-    # Wayland
-    wofi
-    fuzzel
-    waybar
-    swaybg
-    grim
-    slurp
-    mako
-    libnotify
-    playerctl
-    wlogout
+      # Wayland
+      wofi
+      fuzzel
+      waybar
+      swaybg
+      grim
+      slurp
+      mako
+      libnotify
+      playerctl
+      wlogout
 
-    # Terminal
-    foot
+      # Terminal
+      foot
 
-    # Fonts
-    nerd-fonts.jetbrains-mono
-    inter
+      # Fonts
+      nerd-fonts.jetbrains-mono
+      inter
 
-    # Apps
-    thunderbird
-    teams-for-linux
-    kodi
-  ];
+      # Apps
+      thunderbird
+      teams-for-linux
+      kodi
+    ])
+    ++ [
+      hyprdynamicmonitors.packages.${pkgs.system}.default
+    ];
 
 
   xdg.configFile = {
-    "hypr".source = ./config/hypr;
+    "hypr/hypridle.conf".source = ./config/hypr/hypridle.conf;
+    "hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
+    "hypr/hyprlock.conf".source = ./config/hypr/hyprlock.conf;
+    "hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
+    "hypr/wallpaper.png".source = ./config/hypr/wallpaper.png;
+
     "wlogout".source = ./config/wlogout;
     "waybar".source = ./config/waybar;
     "fuzzel/fuzzel.ini".source = ./config/fuzzel/fuzzel.ini;
     "foot/foot.ini".source = ./config/foot/foot.ini;
     "mako/config".source = ./config/mako/config;
+    "hyprdynamicmonitors".source = ./config/hyprdynamicmonitors;
   };
 
   home.file.".local/bin/power-profile" = {
