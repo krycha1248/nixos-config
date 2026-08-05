@@ -18,9 +18,9 @@
         "memory",
         "temperature",
         "network",
+        "bluetooth",
         "pulseaudio",
         "pulseaudio#microphone",
-        "backlight",
         "battery",
         "tray"
     ],
@@ -107,7 +107,22 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
         "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
         "interval": 5,
-        "on-click": "nm-connection-editor"
+        "on-click": "foot nmtui"
+    },
+
+    "bluetooth": {
+        "format": "  {status}",
+        "format-disabled": "  Off",
+        "format-off": "  Off",
+        "format-on": "  On",
+        "format-connected": "  {device_alias}",
+        "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+
+        "tooltip-format": "Bluetooth: {status}\n{num_connections} connected",
+        "tooltip-format-disabled": "Bluetooth: Off",
+        "tooltip-format-connected": "{device_enumerate}",
+
+        "on-click": "foot bluetui"
     },
 
     "pulseaudio": {
@@ -139,18 +154,6 @@
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-"
-    },
-
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon}  {percent}%",
-        "format-icons": [
-            "󰃞",
-            "󰃟",
-            "󰃠"
-        ],
-        "on-scroll-up": "brightnessctl set 5%+",
-        "on-scroll-down": "brightnessctl set 5%-"
     },
 
     "battery": {

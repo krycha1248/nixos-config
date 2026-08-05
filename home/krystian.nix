@@ -34,6 +34,7 @@
     thunderbird
     google-chrome
     teams-for-linux
+    kodi
   ];
 
   home.file = {
