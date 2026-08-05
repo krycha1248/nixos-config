@@ -3,6 +3,10 @@
     font-size: 15px;
 }
 
+/* =========================
+   WAYBAR
+   ========================= */
+
 window#waybar {
     background: rgba(17, 17, 27, 0.72);
     border: none;
@@ -13,26 +17,45 @@ window#waybar {
     background: transparent;
 }
 
+
+/* =========================
+   TOOLTIPS
+   ========================= */
+
 tooltip {
     background: #181825;
     border: 1px solid #313244;
     border-radius: 8px;
+    padding: 4px 8px;
 }
 
 tooltip label {
     color: #cdd6f4;
 }
 
+
+/* =========================
+   WORKSPACES
+   ========================= */
+
 #workspaces {
     margin-left: 8px;
+    margin-right: 4px;
 }
 
 #workspaces button {
-    padding: 0 7px;
+    min-width: 20px;
+    padding: 0 6px;
+
     color: #585b70;
     background: transparent;
+
     border: none;
     border-radius: 6px;
+
+    transition:
+        color 0.15s ease,
+        background 0.15s ease;
 }
 
 #workspaces button.active {
@@ -45,45 +68,96 @@ tooltip label {
     background: #45475a;
 }
 
+
+/* =========================
+   WINDOW TITLE
+   ========================= */
+
 #window {
-    margin-left: 12px;
+    margin-left: 4px;
     color: #a6adc8;
 }
 
+
+/* =========================
+   CLOCK
+   ========================= */
+
 #clock {
+    margin: 0;
+    padding: 0 10px;
+
     color: #cdd6f4;
     font-weight: bold;
 }
+
+
+/* =========================
+   RIGHT SIDE MODULES
+   ========================= */
 
 #cpu,
 #memory,
 #temperature,
 #network,
+#bluetooth,
 #pulseaudio,
 #pulseaudio.microphone,
 #backlight,
-#battery,
-#tray,
-#clock {
-    margin: 0 4px;
-    padding: 0 8px;
+#battery {
+    margin: 0 2px;
+    padding: 0 7px;
 }
+
+
+/* =========================
+   CPU
+   ========================= */
 
 #cpu {
     color: #89b4fa;
 }
 
+
+/* =========================
+   MEMORY
+   ========================= */
+
 #memory {
     color: #cba6f7;
 }
+
+
+/* =========================
+   TEMPERATURE
+   ========================= */
 
 #temperature {
     color: #f9e2af;
 }
 
+
+/* =========================
+   NETWORK
+   ========================= */
+
 #network {
     color: #89dceb;
 }
+
+
+/* =========================
+   BLUETOOTH
+   ========================= */
+
+#bluetooth {
+    color: #89b4fa;
+}
+
+
+/* =========================
+   AUDIO
+   ========================= */
 
 #pulseaudio {
     color: #a6e3a1;
@@ -93,9 +167,19 @@ tooltip label {
     color: #f5c2e7;
 }
 
+
+/* =========================
+   BACKLIGHT
+   ========================= */
+
 #backlight {
     color: #f9e2af;
 }
+
+
+/* =========================
+   BATTERY
+   ========================= */
 
 #battery {
     color: #a6e3a1;
@@ -109,10 +193,18 @@ tooltip label {
     color: #f38ba8;
 }
 
-#battery.charging {
+#battery.charging,
+#battery.plugged {
     color: #a6e3a1;
 }
 
+
+/* =========================
+   TRAY
+   ========================= */
+
 #tray {
+    margin-left: 4px;
     margin-right: 8px;
+    padding: 0 4px;
 }
