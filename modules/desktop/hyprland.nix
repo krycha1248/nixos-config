@@ -45,6 +45,8 @@ in {
   environment.systemPackages = with pkgs; [
     hypridle
     hyprlock
+    hyprpaper
+    wlogout
     wayland-utils
     wl-clipboard
     brightnessctl

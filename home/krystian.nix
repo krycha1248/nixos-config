@@ -8,6 +8,10 @@
     firefox
     neovim
 
+    catppuccin-gtk
+    catppuccin-papirus-folders
+    catppuccin-cursors.mochaDark
+
     ripgrep
     fd
     fzf
@@ -34,20 +38,20 @@
     google-chrome
   ];
 
-  xdg.configFile."hypr/hyprland.conf".source =
-    ./config/hypr/hyprland.conf;
-
-  xdg.configFile."hypr/hypridle.conf".source =
-    ./config/hypr/hypridle.conf;
-
-  xdg.configFile."hypr/hyprlock.conf".source =
-    ./config/hypr/hyprlock.conf;
-
-  xdg.configFile."waybar/config.jsonc".source =
-    ./config/waybar/config.jsonc;
-
-  xdg.configFile."waybar/style.css".source =
-    ./config/waybar/style.css;
+  home.file = {
+    ".config/hypr" = {
+        source = ./config/hypr;
+        recursive = true;
+    };
+    ".config/wlogout" = {
+        source = ./config/wlogout;
+        recursive = true;
+    };
+    ".config/waybar" = {
+        source = ./config/waybar;
+        recursive = true;
+    };
+  };
 
   xdg.configFile."fuzzel/fuzzel.ini".source =
     ./config/fuzzel/fuzzel.ini;

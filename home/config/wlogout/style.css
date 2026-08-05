@@ -1,0 +1,132 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: 600;
+}
+
+window {
+    background-color: rgba(17, 17, 27, 0.96);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+button {
+    background: #1e1e2e;
+    background-color: #1e1e2e;
+    background-image: none;
+
+    color: #cdd6f4;
+
+    border: 2px solid #313244;
+    border-radius: 20px;
+
+    min-width: 150px;
+    min-height: 150px;
+
+    margin: 10px;
+    padding: 0;
+
+    font-size: 52px;
+
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* =========================
+   HOVER / FOCUS
+   ========================= */
+
+button:hover,
+button:focus {
+    background: #313244;
+    background-color: #313244;
+    background-image: none;
+
+    outline: none;
+    box-shadow: none;
+}
+
+/* =========================
+   LOCK
+   ========================= */
+
+#lock {
+    color: #89b4fa;
+}
+
+#lock:hover,
+#lock:focus {
+    color: #89b4fa;
+    border-color: #89b4fa;
+}
+
+/* =========================
+   LOGOUT
+   ========================= */
+
+#logout {
+    color: #f38ba8;
+}
+
+#logout:hover,
+#logout:focus {
+    color: #f38ba8;
+    border-color: #f38ba8;
+}
+
+/* =========================
+   SUSPEND
+   ========================= */
+
+#suspend {
+    color: #cba6f7;
+}
+
+#suspend:hover,
+#suspend:focus {
+    color: #cba6f7;
+    border-color: #cba6f7;
+}
+
+/* =========================
+   HIBERNATE
+   ========================= */
+
+#hibernate {
+    color: #cba6f7;
+}
+
+#hibernate:hover,
+#hibernate:focus {
+    color: #cba6f7;
+    border-color: #cba6f7;
+}
+
+/* =========================
+   REBOOT
+   ========================= */
+
+#reboot {
+    color: #f9e2af;
+}
+
+#reboot:hover,
+#reboot:focus {
+    color: #f9e2af;
+    border-color: #f9e2af;
+}
+
+/* =========================
+   SHUTDOWN
+   ========================= */
+
+#shutdown {
+    color: #f38ba8;
+}
+
+#shutdown:hover,
+#shutdown:focus {
+    color: #f38ba8;
+    border-color: #f38ba8;
+}
