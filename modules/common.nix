@@ -68,6 +68,12 @@
     };
   };
 
+  # ------------------------------------------------------------
+  # Shell
+  # ------------------------------------------------------------
+
+  programs.zsh.enable = true;
+
 
   # ------------------------------------------------------------
   # User
@@ -82,6 +88,8 @@
       "wheel"
       "networkmanager"
     ];
+
+    shell = pkgs.zsh;
   };
 
 
@@ -92,8 +100,12 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.krystian = { imports = [ ../home/krystian.nix catppuccin.homeModules.catppuccin ]; };
-
+  home-manager.users.krystian = {
+    imports = [
+      ../home/krystian.nix
+      catppuccin.homeModules.catppuccin
+    ];
+  };
 
   # ------------------------------------------------------------
   # System packages

@@ -1,6 +1,12 @@
 { config, lib, pkgs, hyprdynamicmonitors, ... }:
 
 {
+  imports = [
+    ./programs/git.nix
+    ./programs/gh.nix
+    ./programs/zsh.nix
+  ];
+
   home.username = "krystian";
   home.homeDirectory = "/home/krystian";
 
@@ -47,6 +53,7 @@
 
       # Fonts
       nerd-fonts.jetbrains-mono
+      nerd-fonts.code-new-roman
       inter
 
       # Apps
@@ -152,39 +159,6 @@
       color-scheme = "prefer-dark";
     };
   };
-
-
-  # ------------------------------------------------------------
-  # Git
-  # ------------------------------------------------------------
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "Krystian Włodek";
-      user.email = "krycha1248@gmail.com";
-    };
-  };
-
-
-  # ------------------------------------------------------------
-  # GH
-  # ------------------------------------------------------------
-
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper = {
-      enable = true;
-    };
-  };
-
-
-  # ------------------------------------------------------------
-  # Shell
-  # ------------------------------------------------------------
-
-  programs.bash.enable = true;
-
 
   # ------------------------------------------------------------
   # Home Manager state version
