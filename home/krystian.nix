@@ -44,9 +44,10 @@
       fuzzel
       waybar
       swaybg
-      grim
-      slurp
       mako
+      hyprshot
+      swappy
+      wl-clipboard
       libnotify
       playerctl
       wlogout
