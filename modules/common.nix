@@ -98,6 +98,10 @@
     shell = pkgs.zsh;
   };
 
+  users.users.root = {
+    shell = pkgs.zsh;
+  };
+
 
   # ------------------------------------------------------------
   # Home Manager
@@ -110,6 +114,12 @@
     imports = [
       ../home/krystian.nix
       catppuccin.homeModules.catppuccin
+    ];
+  };
+
+  home-manager.users.root = {
+    imports = [
+      ../home/root.nix
     ];
   };
 
