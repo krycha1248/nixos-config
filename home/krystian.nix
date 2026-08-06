@@ -5,6 +5,7 @@
     ./programs/git.nix
     ./programs/gh.nix
     ./programs/zsh.nix
+    ./programs/vim.nix
   ];
 
   home.username = "krystian";

@@ -3,6 +3,7 @@
 {
   imports = [
     ./programs/zsh.nix
+    ./programs/vim.nix
   ];
 
   home.username = "root";
