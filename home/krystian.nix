@@ -20,6 +20,10 @@
       # Editors
       vscode
 
+      # Audio & Photo & Video
+      imv
+      mpv
+
       # CLI
       cowsay
       shellcheck
