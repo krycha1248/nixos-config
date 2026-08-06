@@ -132,6 +132,7 @@
     sbctl
     vim
     tree
+    cifs-utils
   ];
 
 
