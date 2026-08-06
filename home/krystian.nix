@@ -77,6 +77,7 @@
       kodi
       libreoffice-still
       discord
+      winbox
     ])
     ++ [
       hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
