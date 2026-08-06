@@ -20,6 +20,7 @@
       vscode
 
       # CLI
+      cowsay
       ripgrep
       fd
       fzf
