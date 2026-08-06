@@ -31,6 +31,7 @@
 
       # DevOps
       terraform
+      lazydocker
       terraform-ls
       ansible
       ansible-lint
