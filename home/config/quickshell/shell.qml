@@ -26,7 +26,7 @@ PanelWindow {
         anchors {
             horizontalCenter: parent.horizontalCenter
             top: parent.top
-            topMargin: root.height * 0.15
+            topMargin: root.height * 0.10
         }
 
         text: Qt.formatTime(new Date(), "HH:mm:ss")
