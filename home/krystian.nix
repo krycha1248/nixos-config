@@ -21,6 +21,7 @@
 
       # CLI
       cowsay
+      shellcheck
       ripgrep
       fd
       fzf
