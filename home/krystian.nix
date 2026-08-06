@@ -39,6 +39,7 @@
       zip
 
       # Wayland
+      quickshell
       wofi
       fuzzel
       waybar
@@ -77,6 +78,7 @@
     "hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
     "hypr/wallpaper.png".source = ./config/hypr/wallpaper.png;
 
+    "quickshell/shell.qml".source = ./config/quickshell/shell.qml;
     "wlogout".source = ./config/wlogout;
     "waybar".source = ./config/waybar;
     "fuzzel/fuzzel.ini".source = ./config/fuzzel/fuzzel.ini;
