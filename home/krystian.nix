@@ -6,6 +6,7 @@
     ./programs/gh.nix
     ./programs/zsh.nix
     ./programs/vim.nix
+    ./programs/udiskie.nix
   ];
 
   home.username = "krystian";
@@ -54,6 +55,7 @@
       libnotify
       playerctl
       wlogout
+      sound-theme-freedesktop
 
       # Terminal
       foot
@@ -91,9 +93,11 @@
     "hyprdynamicmonitors".source = ./config/hyprdynamicmonitors;
   };
 
-  home.file.".local/bin/power-profile" = {
-    source = ./scripts/power-profile;
-    executable = true;
+  home.file = {
+    ".local/bin/power-profile" = {
+      source = ./scripts/power-profile;
+      executable = true;
+    };
   };
 
   home.activation.reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
