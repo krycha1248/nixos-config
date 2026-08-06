@@ -142,6 +142,10 @@
 
   documentation.man.cache.enable = true;
   services.udisks2.enable = true;
+  services.udiskie = {
+    enable = true;
+    notify = true;
+  };
   services.gvfs.enable = true;
 
 
