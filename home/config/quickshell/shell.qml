@@ -23,7 +23,11 @@ PanelWindow {
     Text {
         id: clock
 
-        anchors.centerIn: parent
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            topMargin: root.height * 0.15
+        }
 
         text: Qt.formatTime(new Date(), "HH:mm:ss")
 
@@ -31,19 +35,8 @@ PanelWindow {
 
         font {
             family: "CodeNewRoman Nerd Font Mono"
-            pixelSize: 96
+            pixelSize: root.height * 0.09
             weight: Font.Normal
-        }
-
-        Timer {
-            interval: 1000
-            running: true
-            repeat: true
-
-            onTriggered: {
-                clock.text = Qt.formatTime(new Date(), "HH:mm:ss")
-                date.text = Qt.formatDate(new Date(), "dddd, d MMMM")
-            }
         }
 
         Text {
@@ -52,7 +45,7 @@ PanelWindow {
             anchors {
                 top: parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                topMargin: 8
+                topMargin: root.height * 0.01
             }
 
             text: Qt.formatDate(new Date(), "dddd, d MMMM")
@@ -61,8 +54,21 @@ PanelWindow {
 
             font {
                 family: "Inter"
-                pixelSize: 22
+                pixelSize: root.height * 0.022
                 weight: Font.Normal
+            }
+        }
+
+        Timer {
+            interval: 1000
+            running: true
+            repeat: true
+
+            onTriggered: {
+                const now = new Date()
+
+                clock.text = Qt.formatTime(now, "HH:mm:ss")
+                date.text = Qt.formatDate(now, "dddd, d MMMM")
             }
         }
     }
