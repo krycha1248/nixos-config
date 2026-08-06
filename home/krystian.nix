@@ -48,6 +48,7 @@
 
       # Wayland
       quickshell
+      poweralertd
       wofi
       fuzzel
       thunar
