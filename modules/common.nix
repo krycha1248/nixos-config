@@ -140,7 +140,7 @@
   # Others
   # ------------------------------------------------------------
 
-  documentation.man.generateCaches = true;
+  documentation.man.cache.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 
