@@ -7,7 +7,6 @@
     ./programs/zsh.nix
     ./programs/vim.nix
     ./programs/udiskie.nix
-    ./programs/network-notify.nix
   ];
 
   home.username = "krystian";
