@@ -7,6 +7,7 @@
     ./programs/zsh.nix
     ./programs/vim.nix
     ./programs/udiskie.nix
+    ./programs/network-notify.nix
   ];
 
   home.username = "krystian";
@@ -23,6 +24,7 @@
       # Audio & Photo & Video
       imv
       mpv
+      termusic
 
       # CLI
       cowsay
