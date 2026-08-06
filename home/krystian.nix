@@ -6,7 +6,6 @@
     ./programs/gh.nix
     ./programs/zsh.nix
     ./programs/vim.nix
-    ./programs/udiskie.nix
   ];
 
   home.username = "krystian";
