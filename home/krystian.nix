@@ -44,6 +44,7 @@
       quickshell
       wofi
       fuzzel
+      thunar
       waybar
       swaybg
       mako
