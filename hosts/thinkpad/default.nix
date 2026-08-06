@@ -56,6 +56,7 @@
   # Plymouth
   # ------------------------------------------------------------
 
+  boot.initrd.kernelModules = [ "i915" ];
   boot.plymouth = {
     enable = true;
     theme = "bgrt";
