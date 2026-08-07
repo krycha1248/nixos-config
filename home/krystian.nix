@@ -64,6 +64,7 @@
       playerctl
       wlogout
       sound-theme-freedesktop
+      alsa-utils
 
       # Terminal
       foot
