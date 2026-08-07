@@ -44,19 +44,19 @@ shellAliases = {
   l = "ls -lah";
 
   # NixOS
-  ns = "sudo nixos-rebuild switch --flake /etc/nixos#${host}";
-  nst = "sudo nixos-rebuild test --flake /etc/nixos#${host}";
-  nsb = "sudo nixos-rebuild boot --flake /etc/nixos#${host}";
+  ns = "sudo nixos-rebuild switch --flake ~/nixos#${host}";
+  nst = "sudo nixos-rebuild test --flake ~/nixos#${host}";
+  nsb = "sudo nixos-rebuild boot --flake ~/nixos#${host}";
 
   # Flake
-  nfu = "nix flake update --flake /etc/nixos";
-  nfc = "nix flake check --flake /etc/nixos";
+  nfu = "nix flake update --flake ~/nixos";
+  nfc = "nix flake check --flake ~/nixos";
 
   # Update + rebuild
   nsu =
-    "nix flake update --flake /etc/nixos"
+    "nix flake update --flake ~/nixos"
     + " && "
-    + "sudo nixos-rebuild switch --flake /etc/nixos#${host}";
+    + "sudo nixos-rebuild switch --flake ~/nixos#${host}";
 
   # Garbage collection
   ngc = "sudo nix-collect-garbage -d";
