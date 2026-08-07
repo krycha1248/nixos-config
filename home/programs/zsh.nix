@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 
 {
   home.packages = [
@@ -39,9 +39,29 @@
       ];
     };
 
-    shellAliases = {
-      l = "ls -lah";
-    };
+shellAliases = {
+  # Files
+  l = "ls -lah";
+
+  # NixOS
+  ns = "sudo nixos-rebuild switch --flake /etc/nixos#${host}";
+  nst = "sudo nixos-rebuild test --flake /etc/nixos#${host}";
+  nsb = "sudo nixos-rebuild boot --flake /etc/nixos#${host}";
+
+  # Flake
+  nfu = "nix flake update --flake /etc/nixos";
+  nfc = "nix flake check --flake /etc/nixos";
+
+  # Update + rebuild
+  nsu =
+    "nix flake update --flake /etc/nixos"
+    + " && "
+    + "sudo nixos-rebuild switch --flake /etc/nixos#${host}";
+
+  # Garbage collection
+  ngc = "sudo nix-collect-garbage -d";
+};
+
 
     initContent = ''
       export TERM="xterm-256color"
