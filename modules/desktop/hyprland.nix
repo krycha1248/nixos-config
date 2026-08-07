@@ -25,7 +25,8 @@ in {
 
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprlandSessions}";
+        command =
+          "${tuigreet} --time --remember --remember-session --sessions ${hyprlandSessions}";
         user = "greeter";
       };
     };
@@ -35,7 +36,7 @@ in {
     Type = "idle";
 
     StandardInput = "tty";
-    StandardOutput = "tty";
+    StandardOutput = "journal";
     StandardError = "journal";
 
     TTYReset = true;
