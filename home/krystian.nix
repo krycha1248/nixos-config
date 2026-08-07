@@ -24,12 +24,14 @@
       imv
       mpv
       termusic
+      spotify
 
       # CLI
       cowsay
       shellcheck
       ripgrep
       fd
+      htop
       fzf
       jq
       yazi
