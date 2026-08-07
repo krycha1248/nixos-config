@@ -101,6 +101,9 @@
       COMPLETION_WAITING_DOTS="true"
 
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      ${lib.optionalString (config.home.username == "krystian") ''
+        cowsay "Deploying directly to production builds character."; echo
+      ''}
     '';
   };
 }
