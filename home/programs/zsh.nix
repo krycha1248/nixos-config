@@ -1,4 +1,4 @@
-{ pkgs, host, ... }:
+{ config, lib, pkgs, host, ... }:
 
 {
   home.packages = [
@@ -39,29 +39,54 @@
       ];
     };
 
-shellAliases = {
-  # Files
-  l = "ls -lah";
+    shellAliases =
+      {
+        # ------------------------------------------------------------
+        # Files
+        # ------------------------------------------------------------
 
-  # NixOS
-  ns = "sudo nixos-rebuild switch --flake ~/nixos#${host}";
-  nst = "sudo nixos-rebuild test --flake ~/nixos#${host}";
-  nsb = "sudo nixos-rebuild boot --flake ~/nixos#${host}";
+        l = "ls -lah";
+      }
+      // lib.mkIf (config.home.username == "krystian") {
+        # ------------------------------------------------------------
+        # NixOS
+        # ------------------------------------------------------------
 
-  # Flake
-  nfu = "nix flake update --flake ~/nixos";
-  nfc = "nix flake check --flake ~/nixos";
+        ns =
+          "sudo nixos-rebuild switch --flake ~/nixos#${host}";
 
-  # Update + rebuild
-  nsu =
-    "nix flake update --flake ~/nixos"
-    + " && "
-    + "sudo nixos-rebuild switch --flake ~/nixos#${host}";
+        nst =
+          "sudo nixos-rebuild test --flake ~/nixos#${host}";
 
-  # Garbage collection
-  ngc = "sudo nix-collect-garbage -d";
-};
+        nsb =
+          "sudo nixos-rebuild boot --flake ~/nixos#${host}";
 
+        # ------------------------------------------------------------
+        # Flake
+        # ------------------------------------------------------------
+
+        nfu =
+          "nix flake update --flake ~/nixos";
+
+        nfc =
+          "nix flake check --flake ~/nixos";
+
+        # ------------------------------------------------------------
+        # Update + rebuild
+        # ------------------------------------------------------------
+
+        nsu =
+          "nix flake update --flake ~/nixos"
+          + " && "
+          + "sudo nixos-rebuild switch --flake ~/nixos#${host}";
+
+        # ------------------------------------------------------------
+        # Garbage collection
+        # ------------------------------------------------------------
+
+        ngc =
+          "sudo nix-collect-garbage -d";
+      };
 
     initContent = ''
       export TERM="xterm-256color"
