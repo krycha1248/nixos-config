@@ -27,6 +27,7 @@
       spotify
 
       # CLI
+      screenfetch
       cowsay
       shellcheck
       ripgrep
