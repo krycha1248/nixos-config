@@ -8,6 +8,7 @@
     ../../modules/desktop/power.nix
     ../../modules/desktop/bluetooth.nix
     ../../modules/desktop/printing.nix
+    ../../modules/desktop/thunar.nix
   ];
 
 

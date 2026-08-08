@@ -54,7 +54,6 @@
       poweralertd
       wofi
       fuzzel
-      thunar
       waybar
       swaybg
       mako
