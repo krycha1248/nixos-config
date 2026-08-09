@@ -68,10 +68,10 @@
   services.openssh = {
     enable = false;
 
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = true;
-    };
+    #settings = {
+    #  PermitRootLogin = "no";
+    #  PasswordAuthentication = true;
+    #};
   };
 
   # ------------------------------------------------------------
@@ -129,11 +129,7 @@
 
   environment.systemPackages = with pkgs; [
     sbctl
-    vim
-    tree
     cifs-utils
-    curl
-    wget
   ];
 
 

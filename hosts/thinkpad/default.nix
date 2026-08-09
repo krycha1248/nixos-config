@@ -79,7 +79,6 @@
   boot.kernelParams = [
     "quiet"
     "splash"
-    "loglevel=0"
     "systemd.show_status=false"
     "rd.systemd.show_status=false"
     "udev.log_level=0"

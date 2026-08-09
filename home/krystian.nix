@@ -7,6 +7,7 @@
     ./programs/zsh.nix
     ./programs/vim.nix
     ./programs/udiskie.nix
+    ./programs/desktop.nix
   ];
 
   home.username = "krystian";
@@ -37,6 +38,9 @@
       jq
       yazi
       fastfetch
+      tree
+      curl
+      wget
 
       # DevOps
       terraform
@@ -49,35 +53,12 @@
       unzip
       zip
 
-      # Wayland
-      quickshell
-      poweralertd
       wofi
-      fuzzel
-      waybar
-      swaybg
-      mako
-      hyprshot
-      swappy
-      wl-clipboard
-      libnotify
-      playerctl
-      wlogout
-      sound-theme-freedesktop
-      alsa-utils
       hypridle
       hyprlock
       hyprpaper
       brightnessctl
       wayland-utils
-
-      # Terminal
-      foot
-
-      # Fonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.code-new-roman
-      inter
 
       # Apps
       thunderbird
@@ -86,6 +67,7 @@
       libreoffice-still
       discord
       winbox
+      system-config-printer
     ])
     ++ [
       hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
