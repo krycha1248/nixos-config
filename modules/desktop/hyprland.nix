@@ -33,8 +33,6 @@ in {
   };
 
   systemd.services.greetd.serviceConfig = {
-    Type = "idle";
-
     StandardInput = "tty";
     StandardOutput = "journal";
     StandardError = "journal";
