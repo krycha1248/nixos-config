@@ -65,6 +65,11 @@
       wlogout
       sound-theme-freedesktop
       alsa-utils
+      hypridle
+      hyprlock
+      hyprpaper
+      brightnessctl
+      wayland-utils
 
       # Terminal
       foot
