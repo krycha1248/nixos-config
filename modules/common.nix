@@ -133,6 +133,8 @@
     vim
     tree
     cifs-utils
+    curl
+    wget
   ];
 
 
