@@ -18,6 +18,14 @@
     sound-theme-freedesktop
     alsa-utils
 
+    # Hyprland
+    hypridle
+    hyprlock
+    hyprpaper
+    brightnessctl
+    wayland-utils
+    wofi
+
     # Terminal
     foot
 

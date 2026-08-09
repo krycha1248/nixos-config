@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hyprdynamicmonitors, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -7,72 +7,18 @@
     ./programs/zsh.nix
     ./programs/vim.nix
     ./programs/udiskie.nix
+    
+    # Packages
+    ./programs/apps.nix
+    ./programs/cli.nix
+    ./programs/devops.nix
     ./programs/desktop.nix
+    ./programs/media.nix
+    ./programs/hyprdynamicmonitors.nix
   ];
 
   home.username = "krystian";
   home.homeDirectory = "/home/krystian";
-
-  home.packages =
-    (with pkgs; [
-      # Browsers
-      google-chrome
-
-      # Editors
-      vscode
-
-      # Audio & Photo & Video
-      imv
-      mpv
-      termusic
-      spotify
-
-      # CLI
-      screenfetch
-      cowsay
-      shellcheck
-      ripgrep
-      fd
-      htop
-      fzf
-      jq
-      yazi
-      fastfetch
-      tree
-      curl
-      wget
-
-      # DevOps
-      terraform
-      lazydocker
-      terraform-ls
-      ansible
-      ansible-lint
-
-      # Archives
-      unzip
-      zip
-
-      wofi
-      hypridle
-      hyprlock
-      hyprpaper
-      brightnessctl
-      wayland-utils
-
-      # Apps
-      thunderbird
-      teams-for-linux
-      kodi
-      libreoffice-still
-      discord
-      winbox
-      system-config-printer
-    ])
-    ++ [
-      hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
-
 
   xdg.configFile = {
     "hypr/hypridle.conf".source = ./config/hypr/hypridle.conf;
@@ -87,7 +33,6 @@
     "fuzzel/fuzzel.ini".source = ./config/fuzzel/fuzzel.ini;
     "foot/foot.ini".source = ./config/foot/foot.ini;
     "mako/config".source = ./config/mako/config;
-    "hyprdynamicmonitors".source = ./config/hyprdynamicmonitors;
   };
 
   home.file = {
@@ -102,7 +47,6 @@
       ${pkgs.hyprland}/bin/hyprctl reload || true
     fi
   '';
-
 
   xdg.userDirs = {
     enable = true;
