@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -66,7 +66,9 @@
     };
   };
 
-
+  systemd.services.docker = {
+    wantedBy = lib.mkForce [];
+  };
 
   # ------------------------------------------------------------
   # Plymouth
