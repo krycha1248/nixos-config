@@ -8,7 +8,10 @@ in {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    xwayland.enable = true;
+    xwayland = {
+      enable = true;
+      force_zero_scaling = true;
+    };
   };
 
   xdg.portal = {
