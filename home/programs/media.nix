@@ -6,5 +6,6 @@
     mpv
     termusic
     spotify
+    easyeffects
   ];
 }
