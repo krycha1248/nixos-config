@@ -1,6 +1,6 @@
 * {
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
-    font-size: 15px;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 15px;
 }
 
 /* =========================
@@ -8,89 +8,84 @@
    ========================= */
 
 window#waybar {
-    background: rgba(17, 17, 27, 0.72);
-    border: none;
-    border-radius: 0;
+  background: rgba(17, 17, 27, 0.72);
+  border: none;
+  border-radius: 0;
 }
 
 #waybar {
-    background: transparent;
+  background: transparent;
 }
-
 
 /* =========================
    TOOLTIPS
    ========================= */
 
 tooltip {
-    background: #181825;
-    border: 1px solid #313244;
-    border-radius: 8px;
-    padding: 4px 8px;
+  background: #181825;
+  border: 1px solid #313244;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
 tooltip label {
-    color: #cdd6f4;
+  color: #cdd6f4;
 }
-
 
 /* =========================
    WORKSPACES
    ========================= */
 
 #workspaces {
-    margin-left: 8px;
-    margin-right: 4px;
+  margin-left: 8px;
+  margin-right: 4px;
 }
 
 #workspaces button {
-    min-width: 20px;
-    padding: 0 6px;
+  min-width: 20px;
+  padding: 0 6px;
 
-    color: #585b70;
-    background: transparent;
+  color: #585b70;
+  background: transparent;
 
-    border: none;
-    border-radius: 6px;
+  border: none;
+  border-radius: 6px;
 
-    transition:
-        color 0.15s ease,
-        background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
 #workspaces button.active {
-    color: #89b4fa;
-    background: #313244;
+  color: #89b4fa;
+  background: #313244;
 }
 
 #workspaces button:hover {
-    color: #cdd6f4;
-    background: #45475a;
+  color: #cdd6f4;
+  background: #45475a;
 }
-
 
 /* =========================
    WINDOW TITLE
    ========================= */
 
 #window {
-    margin-left: 4px;
-    color: #a6adc8;
+  margin-left: 4px;
+  color: #a6adc8;
 }
-
 
 /* =========================
    CLOCK
    ========================= */
 
 #clock {
-    margin: 0;
-    padding: 0 10px;
+  margin: 0;
+  padding: 0 10px;
 
-    color: #cdd6f4;
-    font-weight: bold;
+  color: #cdd6f4;
+  font-weight: bold;
 }
-
 
 /* =========================
    RIGHT SIDE MODULES
@@ -105,106 +100,137 @@ tooltip label {
 #pulseaudio.microphone,
 #backlight,
 #battery {
-    margin: 0 2px;
-    padding: 0 7px;
+  margin: 0 2px;
+  padding: 0 7px;
 }
-
 
 /* =========================
    CPU
    ========================= */
 
 #cpu {
-    color: #89b4fa;
+  color: #89b4fa;
 }
-
 
 /* =========================
    MEMORY
    ========================= */
 
 #memory {
-    color: #cba6f7;
+  color: #cba6f7;
 }
-
 
 /* =========================
    TEMPERATURE
    ========================= */
 
 #temperature {
-    color: #f9e2af;
+  color: #f9e2af;
 }
-
 
 /* =========================
    NETWORK
    ========================= */
 
 #network {
-    color: #89dceb;
+  color: #89dceb;
 }
-
 
 /* =========================
    BLUETOOTH
    ========================= */
 
 #bluetooth {
-    color: #89b4fa;
+  color: #89b4fa;
 }
-
 
 /* =========================
    AUDIO
    ========================= */
 
 #pulseaudio {
-    color: #a6e3a1;
+  color: #a6e3a1;
 }
 
 #pulseaudio.microphone {
-    color: #f5c2e7;
+  color: #f5c2e7;
 }
-
 
 /* =========================
    BACKLIGHT
    ========================= */
 
 #backlight {
-    color: #f9e2af;
+  color: #f9e2af;
 }
-
 
 /* =========================
    BATTERY
    ========================= */
 
 #battery {
-    color: #a6e3a1;
+  color: #a6e3a1;
 }
 
 #battery.warning {
-    color: #f9e2af;
+  color: #f9e2af;
 }
 
 #battery.critical {
-    color: #f38ba8;
+  color: #f38ba8;
 }
 
 #battery.charging,
 #battery.plugged {
-    color: #a6e3a1;
+  color: #a6e3a1;
 }
-
 
 /* =========================
    TRAY
    ========================= */
 
 #tray {
-    margin-left: 4px;
-    margin-right: 8px;
-    padding: 0 4px;
+  margin-left: 4px;
+  margin-right: 8px;
+  padding: 0 4px;
+}
+
+/* =========================
+   TRAY CONTEXT MENU
+   ========================= */
+
+menu {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+
+  background: #181825;
+  color: #cdd6f4;
+
+  border: 1px solid #313244;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+menuitem {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+
+  color: #cdd6f4;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+menuitem:hover {
+  background: #313244;
+  color: #ffffff;
+}
+
+menuitem:disabled {
+  color: #585b70;
+}
+
+menuitem label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: inherit;
 }
