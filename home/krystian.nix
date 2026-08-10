@@ -7,8 +7,7 @@
     ./programs/zsh.nix
     ./programs/vim.nix
     ./programs/udiskie.nix
-    
-    # Packages
+
     ./programs/apps.nix
     ./programs/cli.nix
     ./programs/devops.nix
@@ -20,20 +19,95 @@
   home.username = "krystian";
   home.homeDirectory = "/home/krystian";
 
-  xdg.configFile = {
-    "hypr/hypridle.conf".source = ./config/hypr/hypridle.conf;
-    "hypr/hyprland.conf".source = ./config/hypr/hyprland.conf;
-    "hypr/hyprlock.conf".source = ./config/hypr/hyprlock.conf;
-    "hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
-    "hypr/wallpaper.png".source = ./config/hypr/wallpaper.png;
+  # ------------------------------------------------------------
+  # Stylix
+  # ------------------------------------------------------------
 
-    "quickshell/shell.qml".source = ./config/quickshell/shell.qml;
-    "wlogout".source = ./config/wlogout;
-    "waybar".source = ./config/waybar;
-    "fuzzel/fuzzel.ini".source = ./config/fuzzel/fuzzel.ini;
-    "foot/foot.ini".source = ./config/foot/foot.ini;
-    "mako/config".source = ./config/mako/config;
+  stylix = {
+    enable = true;
+
+    base16Scheme =
+      "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+
+    polarity = "dark";
+
+    cursor = {
+      package = pkgs.catppuccin-cursors.mochaDark;
+      name = "catppuccin-mocha-dark-cursors";
+      size = 24;
+    };
+
+    fonts = {
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+
+      serif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+
+      monospace = {
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+    };
   };
+
+  # ------------------------------------------------------------
+  # XDG config files
+  # ------------------------------------------------------------
+
+  xdg.configFile = {
+    "hypr/hypridle.conf".source =
+      ./config/hypr/hypridle.conf;
+
+    "hypr/hyprland.conf".source =
+      ./config/hypr/hyprland.conf;
+
+    "hypr/hyprlock.conf".source =
+      ./config/hypr/hyprlock.conf;
+
+    "hypr/hyprpaper.conf".source =
+      ./config/hypr/hyprpaper.conf;
+
+    "hypr/wallpaper.png".source =
+      ./config/hypr/wallpaper.png;
+
+    "quickshell/shell.qml".source =
+      ./config/quickshell/shell.qml;
+
+    "wlogout".source =
+      ./config/wlogout;
+
+    "waybar".source =
+      ./config/waybar;
+
+    "fuzzel/fuzzel.ini".source =
+      ./config/fuzzel/fuzzel.ini;
+
+    "foot/foot.ini".source =
+      ./config/foot/foot.ini;
+
+    "mako/config".source =
+      ./config/mako/config;
+  };
+
+  # ------------------------------------------------------------
+  # Local scripts
+  # ------------------------------------------------------------
 
   home.file = {
     ".local/bin/power-profile" = {
@@ -42,81 +116,60 @@
     };
   };
 
-  home.activation.reloadHyprland = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
-      ${pkgs.hyprland}/bin/hyprctl reload || true
-    fi
-  '';
+  # ------------------------------------------------------------
+  # Hyprland
+  # ------------------------------------------------------------
+
+  home.activation.reloadHyprland =
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      if [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+        ${pkgs.hyprland}/bin/hyprctl reload || true
+      fi
+    '';
+
+  # ------------------------------------------------------------
+  # XDG user directories
+  # ------------------------------------------------------------
 
   xdg.userDirs = {
     enable = true;
-
     createDirectories = true;
 
-    desktop = "${config.home.homeDirectory}/Desktop";
-    documents = "${config.home.homeDirectory}/Documents";
-    download = "${config.home.homeDirectory}/Downloads";
-    music = "${config.home.homeDirectory}/Music";
-    pictures = "${config.home.homeDirectory}/Pictures";
-    publicShare = "${config.home.homeDirectory}/Public";
-    templates = "${config.home.homeDirectory}/Templates";
-    videos = "${config.home.homeDirectory}/Videos";
-  };
+    desktop =
+      "${config.home.homeDirectory}/Desktop";
 
-  services.hyprpolkitagent = {
-    enable = true;
-  };
+    documents =
+      "${config.home.homeDirectory}/Documents";
 
-  catppuccin = {
-    enable = true;
-    autoEnable = false;
+    download =
+      "${config.home.homeDirectory}/Downloads";
 
-    flavor = "mocha";
-    accent = "blue";
+    music =
+      "${config.home.homeDirectory}/Music";
 
-    gtk = {
-      icon = {
-        enable = true;
-        flavor = "mocha";
-        accent = "blue";
-      };
-    };
-  };
+    pictures =
+      "${config.home.homeDirectory}/Pictures";
 
-  gtk = {
-    enable = true;
-    font = {
-      name = "Inter";
-    };
+    publicShare =
+      "${config.home.homeDirectory}/Public";
 
-    gtk3.extraConfig = {
-      "gtk-decoration-layout" = ":";
-      "gtk-application-prefer-dark-theme" = true;
-    };
+    templates =
+      "${config.home.homeDirectory}/Templates";
 
-    gtk4.extraConfig = {
-      "gtk-decoration-layout" = ":";
-      "gtk-application-prefer-dark-theme" = true;
-    };
-  };
-
-  home.pointerCursor = {
-    gtk.enable = true;
-
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "catppuccin-mocha-dark-cursors";
-    size = 24;
-  };
-
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+    videos =
+      "${config.home.homeDirectory}/Videos";
   };
 
   # ------------------------------------------------------------
-  # Home Manager state version
+  # Polkit
+  # ------------------------------------------------------------
+
+  services.polkit-gnome = {
+    enable = true;
+  };
+
+  # ------------------------------------------------------------
+  # Home Manager
   # ------------------------------------------------------------
 
   home.stateVersion = "26.05";

@@ -16,6 +16,11 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    stylix = {
+      url = "github:danth/stylix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprdynamicmonitors.url =
       "github:fiffeek/hyprdynamicmonitors";
   };
@@ -27,53 +32,24 @@
       home-manager,
       lanzaboote,
       catppuccin,
+      stylix,
       hyprdynamicmonitors,
       ...
     }:
 
     let
-      /*
-        hostConfigs is the single source of truth for hosts.
+      system = "x86_64-linux";
 
-        The attribute name becomes the host identifier:
-
-          thinkpad = ./hosts/thinkpad;
-
-        means:
-
-          host = "thinkpad"
-      */
       hostConfigs = {
         thinkpad = ./hosts/thinkpad;
-
-        # Add future hosts here:
-        #
-        # desktop = ./hosts/desktop;
-        # server = ./hosts/server;
-        # laptop = ./hosts/laptop;
       };
 
-      /*
-        Create a NixOS system from one host definition.
-
-        `name` comes directly from the attribute name in hostConfigs.
-      */
       mkHost =
         name: hostPath:
+
         nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
 
-          /*
-            Arguments available to NixOS modules.
-
-            Any module can now do:
-
-              { host, ... }:
-
-            and receive:
-
-              host = "thinkpad";
-          */
           specialArgs = {
             host = name;
             inherit hyprdynamicmonitors;
@@ -83,44 +59,32 @@
             hostPath
             ./modules/common.nix
 
+            # Stylix
+            stylix.nixosModules.stylix
+
+            # Home Manager
             home-manager.nixosModules.home-manager
+
+            # Secure Boot
             lanzaboote.nixosModules.lanzaboote
 
             {
               _module.args.catppuccin = catppuccin;
 
-              /*
-                Arguments available to Home Manager modules.
-
-                Any Home Manager module can now do:
-
-                  { host, ... }:
-
-                and receive the same host identifier.
-              */
               home-manager.extraSpecialArgs = {
                 host = name;
                 inherit hyprdynamicmonitors;
               };
+
+              # Stylix for Home Manager
+              home-manager.sharedModules = [
+                stylix.homeModules.stylix
+              ];
             }
           ];
         };
-
     in
     {
-      /*
-        Automatically turn:
-
-          {
-            thinkpad = ./hosts/thinkpad;
-          }
-
-        into:
-
-          {
-            thinkpad = mkHost "thinkpad" ./hosts/thinkpad;
-          }
-      */
       nixosConfigurations =
         builtins.mapAttrs mkHost hostConfigs;
     };

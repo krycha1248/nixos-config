@@ -20,7 +20,6 @@
     options = "--delete-older-than 30d";
   };
 
-
   # ------------------------------------------------------------
   # Networking
   # ------------------------------------------------------------
@@ -32,11 +31,8 @@
       networkmanager-openvpn
     ];
   };
-  networking.firewall.enable = true;
-  #networking.firewall.allowedTCPPorts = [
-    #22
-  #];
 
+  networking.firewall.enable = true;
 
   # ------------------------------------------------------------
   # Locale / keyboard / timezone
@@ -48,14 +44,13 @@
 
   console.keyMap = "pl";
 
-
-
   # ------------------------------------------------------------
   # Console
   # ------------------------------------------------------------
 
   console = {
     font = "ter-v24n";
+
     packages = with pkgs; [
       terminus_font
     ];
@@ -67,11 +62,6 @@
 
   services.openssh = {
     enable = false;
-
-    #settings = {
-    #  PermitRootLogin = "no";
-    #  PasswordAuthentication = true;
-    #};
   };
 
   # ------------------------------------------------------------
@@ -79,7 +69,6 @@
   # ------------------------------------------------------------
 
   programs.zsh.enable = true;
-
 
   # ------------------------------------------------------------
   # User
@@ -102,19 +91,23 @@
     shell = pkgs.zsh;
   };
 
-
   # ------------------------------------------------------------
   # Home Manager
   # ------------------------------------------------------------
 
-  home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  # Intentionally false:
+  # Home Manager needs its own nixpkgs instance so that
+  # its nixpkgs configuration can contain allowUnfree.
+  home-manager.useGlobalPkgs = false;
 
   home-manager.users.krystian = {
     imports = [
       ../home/krystian.nix
-      catppuccin.homeModules.catppuccin
     ];
+
+    nixpkgs.config.allowUnfree = true;
   };
 
   home-manager.users.root = {
@@ -132,14 +125,13 @@
     cifs-utils
   ];
 
-
   # ------------------------------------------------------------
   # Others
   # ------------------------------------------------------------
 
   documentation.man.cache.enable = true;
-  services.udisks2.enable = true;
 
+  services.udisks2.enable = true;
 
   # ------------------------------------------------------------
   # NixOS state version
