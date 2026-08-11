@@ -18,7 +18,3 @@ config_file_type = "template"
 [[profiles.normal.conditions.required_monitors]]
 description = "Chimei Innolux Corporation 0x143F"
 monitor_tag = "monitor0"
-
-[[profiles.normal.conditions.required_monitors]]
-description = "Lenovo Group Limited T24m-29 V90CA7RF"
-monitor_tag = "monitor1"
