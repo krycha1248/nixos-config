@@ -16,5 +16,5 @@ config_file_type = "template"
 [profiles.normal.conditions]
 
 [[profiles.normal.conditions.required_monitors]]
-description = "Chimei Innolux Corporation 0x143F"
+name = "eDP-1"
 monitor_tag = "monitor0"
