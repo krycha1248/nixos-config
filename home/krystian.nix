@@ -68,6 +68,13 @@
     };
   };
 
+  home.sessionVariables = {
+    QT_SCALE_FACTOR = "1.5";
+  };
+
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+
   # ------------------------------------------------------------
   # XDG config files
   # ------------------------------------------------------------
