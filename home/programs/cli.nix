@@ -9,6 +9,7 @@
     ripgrep
     fd
     htop
+    btop
     fzf
     jq
     yazi
