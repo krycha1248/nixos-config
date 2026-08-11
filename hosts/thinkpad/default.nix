@@ -63,6 +63,17 @@
     wantedBy = lib.mkForce [];
   };
 
+
+  # ------------------------------------------------------------
+  # Lid actions
+  # ------------------------------------------------------------
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "suspend";
+  };
+
   # ------------------------------------------------------------
   # Plymouth
   # ------------------------------------------------------------
