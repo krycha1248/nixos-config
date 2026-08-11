@@ -33,5 +33,8 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.code-new-roman
     inter
+
+    # Tools
+    system-config-printer
   ];
 }
