@@ -9,6 +9,7 @@
     ../../modules/desktop/bluetooth.nix
     ../../modules/desktop/printing.nix
     ../../modules/desktop/thunar.nix
+    ../../modules/desktop/obs.nix
   ];
 
 
