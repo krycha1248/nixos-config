@@ -25,16 +25,14 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "default": "",
-            "active": "",
-            "empty": ""
+	    "default": "",
+	    "active": "",
+	    "empty": ""
         },
-        "persistent-workspaces": {
-            "*": 5
-        },
-	"all-outputs": true,
-        "on-click": "activate",
-        "sort-by-number": true
+        "all-outputs": true,
+        "sort-by": "number",
+        "show-special": false,
+        "tooltip": false,
     },
 
     "hyprland/window": {
