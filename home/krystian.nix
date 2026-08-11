@@ -14,6 +14,8 @@
     ./programs/desktop.nix
     ./programs/media.nix
     ./programs/hyprdynamicmonitors.nix
+
+    ./services/desktop.nix
   ];
 
   home.username = "krystian";
