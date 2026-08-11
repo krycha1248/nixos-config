@@ -9,6 +9,7 @@
     kodi
     libreoffice-still
     discord
+    gimp
     winbox
   ];
 }
