@@ -82,6 +82,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "vboxusers"
     ];
 
     shell = pkgs.zsh;

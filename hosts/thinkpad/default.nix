@@ -48,7 +48,7 @@
 
 
   # ------------------------------------------------------------
-  # Docker
+  # Docker & Virtualbox
   # ------------------------------------------------------------
 
   virtualisation.docker = {
@@ -58,6 +58,9 @@
       setSocketVariable = true;
     };
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
 
   systemd.services.docker = {
     wantedBy = lib.mkForce [];
