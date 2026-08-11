@@ -94,14 +94,14 @@
   systemd.user.services.hyprdynamicmonitors = {
     Unit = {
       Description = "Hyprdynamicmonitors";
-      After = [ "graphical-session.target" ];
       PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
     };
 
     Service = {
-      Type = "oneshot";
       ExecStart = "${pkgs.hyprdynamicmonitors}/bin/hyprdynamicmonitors run";
-      RemainAfterExit = true;
+      Restart = "on-failure";
+      RestartSec = 2;
     };
 
     Install = {
