@@ -2,27 +2,51 @@
   description = "Krystian's NixOS configurations";
 
   inputs = {
+    # ----------------------------------------------------------
+    # NixOS
+    # ----------------------------------------------------------
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    # ----------------------------------------------------------
+    # Home Manager
+    # ----------------------------------------------------------
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # ----------------------------------------------------------
+    # Lanzaboote
+    # ----------------------------------------------------------
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote/cd3b03e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    # ----------------------------------------------------------
+    # Theming
+    # ----------------------------------------------------------
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprdynamicmonitors.url =
-      "github:fiffeek/hyprdynamicmonitors";
+    # ----------------------------------------------------------
+    # Hyprland
+    # ----------------------------------------------------------
+
+    hyprdynamicmonitors = {
+      url = "github:fiffeek/hyprdynamicmonitors";
+    };
   };
 
   outputs =
@@ -46,7 +70,6 @@
 
       mkHost =
         name: hostPath:
-
         nixpkgs.lib.nixosSystem {
           inherit system;
 
@@ -59,33 +82,42 @@
             hostPath
             ./modules/common.nix
 
+            # --------------------------------------------------
             # Stylix
+            # --------------------------------------------------
+
             stylix.nixosModules.stylix
 
+            # --------------------------------------------------
             # Home Manager
+            # --------------------------------------------------
+
             home-manager.nixosModules.home-manager
 
-            # Secure Boot
-            lanzaboote.nixosModules.lanzaboote
-
             {
-              _module.args.catppuccin = catppuccin;
-
               home-manager.extraSpecialArgs = {
                 host = name;
                 inherit hyprdynamicmonitors;
               };
 
-              # Stylix for Home Manager
               home-manager.sharedModules = [
                 stylix.homeModules.stylix
               ];
+            }
+
+            # --------------------------------------------------
+            # Lanzaboote
+            # --------------------------------------------------
+
+            lanzaboote.nixosModules.lanzaboote
+
+            {
+              _module.args.catppuccin = catppuccin;
             }
           ];
         };
     in
     {
-      nixosConfigurations =
-        builtins.mapAttrs mkHost hostConfigs;
+      nixosConfigurations = builtins.mapAttrs mkHost hostConfigs;
     };
 }
