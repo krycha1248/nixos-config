@@ -66,6 +66,7 @@
 
       hostConfigs = {
         thinkpad = ./hosts/thinkpad;
+        dell = ./hosts/dell;
       };
 
       mkHost =
