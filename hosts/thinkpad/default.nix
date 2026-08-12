@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -62,6 +62,17 @@
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      virtualbox = prev.virtualbox.overrideAttrs (oldAttrs: {
+        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ pkgs.makeBinaryWrapper ];
+        postFixup = (oldAttrs.postFixup or "") + ''
+          wrapProgram $out/bin/VirtualBox --set QT_SCALE_FACTOR 1.5
+        '';
+      });
+    })
+  ];
 
   systemd.services.docker = {
     wantedBy = lib.mkForce [];

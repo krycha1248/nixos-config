@@ -69,7 +69,7 @@
   };
 
   home.sessionVariables = {
-    QT_SCALE_FACTOR = "1.5";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION=1;
   };
 
   xdg.configFile."uwsm/env".source =
