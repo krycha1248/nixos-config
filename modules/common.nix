@@ -83,6 +83,7 @@
       "wheel"
       "networkmanager"
       "vboxusers"
+      "libvirtd"
     ];
 
     shell = pkgs.zsh;
