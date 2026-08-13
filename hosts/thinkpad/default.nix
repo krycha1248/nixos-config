@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -59,11 +59,15 @@
     HandleLidSwitchDocked = "suspend";
   };
 
+
   # ------------------------------------------------------------
   # Plymouth
   # ------------------------------------------------------------
 
-  boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.kernelModules = [
+    "i915"
+  ];
+
   boot.plymouth = {
     enable = true;
     theme = "bgrt";
@@ -80,4 +84,19 @@
     "udev.log_level=0"
     "rd.udev.log_level=0"
   ];
+
+
+  # ------------------------------------------------------------
+  # Graphics / Intel VA-API
+  # ------------------------------------------------------------
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+
+    extraPackages = with pkgs; [
+      intel-media-driver
+      libva
+    ];
+  };
 }
