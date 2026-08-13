@@ -136,6 +136,15 @@
   services.udisks2.enable = true;
 
   # ------------------------------------------------------------
+  # Keychron
+  # ------------------------------------------------------------
+
+  services.udev.extraRules = ''
+    # Keychron Link-KM (3434:d026) — Keychron Launcher / WebHID
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="d026", MODE="0660", GROUP="users", TAG+="uaccess"
+  '';
+
+    # ------------------------------------------------------------
   # NixOS state version
   # ------------------------------------------------------------
 
