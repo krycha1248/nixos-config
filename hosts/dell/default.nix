@@ -136,4 +136,28 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  # ------------------------------------------------------------
+  # Fingerprint reader
+  # ------------------------------------------------------------
+
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-broadcom;
+    };
+  };
+
+
+  # ------------------------------------------------------------
+  # Fingerprint authentication
+  # ------------------------------------------------------------
+
+  security.pam.services = {
+    sudo.fprintAuth = true;
+    login.fprintAuth = true;
+    polkit-1.fprintAuth = true;
+    greetd.fprintAuth = true;
+  };
 }
