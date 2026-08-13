@@ -158,7 +158,7 @@
     sudo.fprintAuth = true;
     login.fprintAuth = true;
     polkit-1.fprintAuth = true;
-    greetd.fprintAuth = true;
+    greetd.fprintAuth = false;
     hyprlock.fprintAuth = true;
   };
 }
