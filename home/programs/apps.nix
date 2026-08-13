@@ -6,10 +6,12 @@
     vscode
     thunderbird
     teams-for-linux
-    kodi
     libreoffice-still
     discord
     gimp
     winbox
+    (kodi.withPackages (kodiPkgs: with kodiPkgs; [
+      inputstream-adaptive
+    ]))
   ];
 }
