@@ -17,6 +17,7 @@
     tree
     curl
     wget
+    usbutils
 
     # Archives
     unzip
