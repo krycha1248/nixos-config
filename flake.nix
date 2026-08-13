@@ -46,6 +46,7 @@
 
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
