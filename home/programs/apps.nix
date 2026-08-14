@@ -10,7 +10,7 @@
     discord
     gimp
     winbox
-    (kodi.withPackages (kodiPkgs: with kodiPkgs; [
+    (kodi-wayland.withPackages (kodiPkgs: with kodiPkgs; [
       inputstream-adaptive
     ]))
   ];
