@@ -68,6 +68,14 @@
     };
   };
 
+  gtk = {
+    theme = lib.mkForce {
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3-dark";
+    };
+  };
+
+
   home.sessionVariables = {
     QT_WAYLAND_DISABLE_WINDOWDECORATION=1;
   };
