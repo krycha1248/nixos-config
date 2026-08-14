@@ -13,5 +13,6 @@
     (kodi-wayland.withPackages (kodiPkgs: with kodiPkgs; [
       inputstream-adaptive
     ]))
+    zathura
   ];
 }
