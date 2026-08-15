@@ -9,6 +9,11 @@ path = "/org/freedesktop/UPower/devices/line_power_AC"
 [[power_events.dbus_signal_match_rules]]
 object_path = "/org/freedesktop/UPower/devices/line_power_AC"
 
+
+# ============================================================
+# Laptop + Lenovo — normal mode
+# ============================================================
+
 [profiles.normal]
 config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/normal.go.tmpl"
 config_file_type = "template"
@@ -18,3 +23,23 @@ config_file_type = "template"
 [[profiles.normal.conditions.required_monitors]]
 name = "eDP-1"
 monitor_tag = "monitor0"
+
+
+# ============================================================
+# Laptop + HDMI — mirror mode
+# ============================================================
+
+[profiles.mirror-hdmi]
+config_file = "$HOME/.config/hyprdynamicmonitors/hyprconfigs/mirror-hdmi.go.tmpl"
+config_file_type = "template"
+
+[profiles.mirror-hdmi.conditions]
+
+[[profiles.mirror-hdmi.conditions.required_monitors]]
+name = "eDP-1"
+monitor_tag = "monitor0"
+
+[[profiles.mirror-hdmi.conditions.required_monitors]]
+name = "HDMI-A-.*"
+match_name_using_regex = true
+monitor_tag = "mirror"

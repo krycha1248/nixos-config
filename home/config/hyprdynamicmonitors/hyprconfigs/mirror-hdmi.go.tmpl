@@ -1,4 +1,5 @@
 {{- $main := index .MonitorsByTag "monitor0" }}
+{{- $external := index .MonitorsByTag "mirror" }}
 {{- $mainMode := index $main.AvailableModes 0 }}
 
 # eDP-1 — main display
@@ -7,5 +8,10 @@ monitor={{$main.Name}},{{$mainMode}},auto,1.20
 # Lenovo — optional, independent, positioned to the right
 monitor=desc:Lenovo Group Limited T24m-29 V90CA7RF,1920x1080@60,auto-center-right,1.00000000
 
-# Fallback — mirror the main display
-monitor=,preferred,auto,1.0,mirror,{{$main.Name}}
+# HDMI — mirror the main display
+monitor={{$external.Name}},preferred,auto,1.0,mirror,{{$main.Name}}
+
+# Workaround for mirror rendering artifacts
+debug {
+    damage_tracking = 0
+}
