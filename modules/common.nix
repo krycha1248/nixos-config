@@ -34,6 +34,10 @@
 
   networking.firewall.enable = true;
 
+  security.pki.certificateFiles = [
+    ../certs/wlodek-lan-root-ca.crt
+  ];
+
   # ------------------------------------------------------------
   # Locale / keyboard / timezone
   # ------------------------------------------------------------
