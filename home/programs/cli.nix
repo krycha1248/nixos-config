@@ -13,7 +13,10 @@
     yazi
     fastfetch
     tree
+    cowsay
 
     # Archives
+    unzip
+    zip
   ];
 }
