@@ -18,6 +18,7 @@
     ./networking.nix
     ./users.nix
     ./home-manager.nix
+    ./nix-settings.nix
   ];
 
   # ------------------------------------------------------------

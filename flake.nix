@@ -2,42 +2,22 @@
   description = "Krystian's NixOS configurations";
 
   inputs = {
-    # ----------------------------------------------------------
-    # NixOS
-    # ----------------------------------------------------------
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-
-    # ----------------------------------------------------------
-    # Home Manager
-    # ----------------------------------------------------------
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ----------------------------------------------------------
-    # Lanzaboote
-    # ----------------------------------------------------------
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/cd3b03e";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ----------------------------------------------------------
-    # Theming
-    # ----------------------------------------------------------
-
     stylix = {
       url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # ----------------------------------------------------------
-    # Hyprland
-    # ----------------------------------------------------------
 
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";
@@ -59,11 +39,6 @@
     let
       system = "x86_64-linux";
 
-      hostConfigs = {
-        thinkpad = ./hosts/thinkpad;
-        dell = ./hosts/dell;
-      };
-
       mkHost =
         name: hostPath:
         nixpkgs.lib.nixosSystem {
@@ -78,15 +53,7 @@
             hostPath
             ./modules/common.nix
 
-            # --------------------------------------------------
-            # Stylix
-            # --------------------------------------------------
-
             stylix.nixosModules.stylix
-
-            # --------------------------------------------------
-            # Home Manager
-            # --------------------------------------------------
 
             home-manager.nixosModules.home-manager
 
@@ -101,15 +68,13 @@
               ];
             }
 
-            # --------------------------------------------------
-            # Lanzaboote
-            # --------------------------------------------------
-
             lanzaboote.nixosModules.lanzaboote
           ];
         };
+
     in
     {
-      nixosConfigurations = builtins.mapAttrs mkHost hostConfigs;
+      nixosConfigurations.thinkpad = mkHost "thinkpad" ./hosts/thinkpad;
+      nixosConfigurations.dell = mkHost "dell" ./hosts/dell;
     };
 }
