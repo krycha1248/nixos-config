@@ -11,20 +11,16 @@
     mako
     hyprshot
     swappy
-    wl-clipboard
     libnotify
     playerctl
     wlogout
     sound-theme-freedesktop
-    alsa-utils
 
     # Hyprland
     hypridle
     hyprlock
     hyprpaper
     brightnessctl
-    wayland-utils
-    wofi
 
     # Terminal
     foot

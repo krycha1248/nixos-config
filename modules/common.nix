@@ -1,6 +1,89 @@
-{ config, pkgs, lib, catppuccin, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  # ------------------------------------------------------------
+  # Desktop modules
+  # ------------------------------------------------------------
+
+  imports = [
+    ./desktop/hyprland.nix
+    ./desktop/power.nix
+    ./desktop/bluetooth.nix
+    ./desktop/printing.nix
+    ./desktop/thunar.nix
+    ./desktop/obs.nix
+    ./desktop/virtualisation.nix
+    ./system-packages.nix
+  ];
+
+  # ------------------------------------------------------------
+  # Lanzaboote / Secure Boot
+  # ------------------------------------------------------------
+
+  boot.loader.systemd-boot.enable = false;
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
+
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/efi";
+  };
+
+  boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+  boot.loader.systemd-boot.configurationLimit = 5;
+
+  # ------------------------------------------------------------
+  # Lid actions
+  # ------------------------------------------------------------
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "suspend";
+  };
+
+  # ------------------------------------------------------------
+  # Plymouth
+  # ------------------------------------------------------------
+
+  boot.initrd.kernelModules = [
+    "i915"
+  ];
+
+  boot.plymouth = {
+    enable = true;
+    theme = "bgrt";
+  };
+
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
+
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "systemd.show_status=false"
+    "rd.systemd.show_status=false"
+    "udev.log_level=0"
+    "rd.udev.log_level=0"
+  ];
+
+  # ------------------------------------------------------------
+  # Graphics / Intel VA-API
+  # ------------------------------------------------------------
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+
+    extraPackages = with pkgs; [
+      intel-media-driver
+      libva
+    ];
+  };
+
   # ------------------------------------------------------------
   # Nix
   # ------------------------------------------------------------
@@ -37,6 +120,12 @@
   security.pki.certificateFiles = [
     ../certs/wlodek-lan-root-ca.crt
   ];
+
+  # ------------------------------------------------------------
+  # Compatibility for dynamically linked binaries
+  # ------------------------------------------------------------
+
+  programs.nix-ld.enable = true;
 
   # ------------------------------------------------------------
   # Locale / keyboard / timezone
@@ -123,15 +212,6 @@
   };
 
   # ------------------------------------------------------------
-  # System packages
-  # ------------------------------------------------------------
-
-  environment.systemPackages = with pkgs; [
-    sbctl
-    cifs-utils
-  ];
-
-  # ------------------------------------------------------------
   # Others
   # ------------------------------------------------------------
 
@@ -149,8 +229,8 @@
   '';
 
     # ------------------------------------------------------------
-  # NixOS state version
-  # ------------------------------------------------------------
+    # NixOS state version
+    # ------------------------------------------------------------
 
   system.stateVersion = "26.05";
 }

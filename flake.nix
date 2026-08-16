@@ -30,11 +30,6 @@
     # Theming
     # ----------------------------------------------------------
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +51,6 @@
       nixpkgs,
       home-manager,
       lanzaboote,
-      catppuccin,
       stylix,
       hyprdynamicmonitors,
       ...
@@ -112,10 +106,6 @@
             # --------------------------------------------------
 
             lanzaboote.nixosModules.lanzaboote
-
-            {
-              _module.args.catppuccin = catppuccin;
-            }
           ];
         };
     in

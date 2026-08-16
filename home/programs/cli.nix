@@ -3,8 +3,6 @@
 {
   home.packages = with pkgs; [
     # CLI
-    screenfetch
-    cowsay
     shellcheck
     ripgrep
     fd
@@ -15,12 +13,7 @@
     yazi
     fastfetch
     tree
-    curl
-    wget
-    usbutils
 
     # Archives
-    unzip
-    zip
   ];
 }
