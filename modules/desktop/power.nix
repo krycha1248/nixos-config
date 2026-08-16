@@ -16,8 +16,6 @@
       Type = "oneshot";
       ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced";
     };
-
-    wantedBy = [ "multi-user.target" ];
   };
 
   systemd.services.power-profile-battery = {
@@ -27,7 +25,5 @@
       Type = "oneshot";
       ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver";
     };
-
-    wantedBy = [ "multi-user.target" ];
   };
 }
