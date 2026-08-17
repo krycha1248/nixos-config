@@ -15,6 +15,7 @@
     tree
     cowsay
     goose-cli
+    bitwarden-cli
 
     # Archives
     unzip

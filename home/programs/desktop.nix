@@ -32,5 +32,6 @@
 
     # Tools
     system-config-printer
+    bitwarden-desktop
   ];
 }
