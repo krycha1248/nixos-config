@@ -14,6 +14,7 @@
     fastfetch
     tree
     cowsay
+    goose-cli
 
     # Archives
     unzip
