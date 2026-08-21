@@ -42,6 +42,7 @@
 
     # Allow the NVIDIA GPU to power down when unused.
     powerManagement.enable = true;
+    powerManagement.finegrained = true;
 
     # Intel = primary GPU
     # NVIDIA = PRIME offload GPU

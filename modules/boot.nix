@@ -1,11 +1,10 @@
-{ pkgs, ... }:
-
 {
   boot.loader.systemd-boot.enable = false;
 
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
+    configurationLimit = 5;
   };
 
   boot.loader.efi = {
@@ -14,7 +13,6 @@
   };
 
   boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
-  boot.loader.systemd-boot.configurationLimit = 5;
 
   boot.initrd.kernelModules = [
     "i915"
@@ -36,16 +34,6 @@
     "udev.log_level=0"
     "rd.udev.log_level=0"
   ];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-
-    extraPackages = with pkgs; [
-      intel-media-driver
-      libva
-    ];
-  };
 
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";

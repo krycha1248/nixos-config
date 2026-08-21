@@ -32,7 +32,7 @@
         "all-outputs": true,
         "sort-by": "number",
         "show-special": false,
-        "tooltip": false,
+        "tooltip": false
     },
 
     "hyprland/window": {

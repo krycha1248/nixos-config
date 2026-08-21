@@ -5,12 +5,9 @@
   # Docker & Virtualbox
   # ------------------------------------------------------------
 
-  virtualisation.docker = {
+  virtualisation.docker.rootless = {
     enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    setSocketVariable = true;
   };
 
   virtualisation.virtualbox.host.enable = true;
@@ -35,9 +32,9 @@
     };
   };
 
-  programs.virt-manager.enable = true;
+  systemd.services.libvirtd.serviceConfig.SuccessExitStatus = [ 1 ];
 
-  systemd.services.docker = {
-    wantedBy = lib.mkForce [];
-  };
+  systemd.user.services.docker.unitConfig.ConditionUser = lib.mkForce "krystian";
+
+  programs.virt-manager.enable = true;
 }

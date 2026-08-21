@@ -3,7 +3,11 @@
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-  hyprlandSessions = "${pkgs.hyprland}/share/wayland-sessions";
+
+  uwsmSessions = pkgs.runCommand "hyprland-uwsm-sessions" { } ''
+    mkdir -p $out
+    ln -s "${pkgs.hyprland}/share/wayland-sessions/hyprland-uwsm.desktop" $out/hyprland-uwsm.desktop
+  '';
 in {
 
   programs.hyprland = {
@@ -11,11 +15,12 @@ in {
     withUWSM = true;
   };
 
+  security.pam.services.hyprlock = { };
+
   xdg.portal = {
     enable = true;
 
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
   };
@@ -26,7 +31,7 @@ in {
     settings = {
       default_session = {
         command =
-          "${tuigreet} --time --remember --remember-session --sessions ${hyprlandSessions}";
+          "${tuigreet} --time --remember --remember-session --sessions ${uwsmSessions}";
         user = "greeter";
       };
     };

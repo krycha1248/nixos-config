@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # ------------------------------------------------------------
@@ -7,6 +7,8 @@
 
   imports = [
     ./desktop/hyprland.nix
+    ./desktop/graphics.nix
+    ./desktop/hardware.nix
     ./desktop/power.nix
     ./desktop/bluetooth.nix
     ./desktop/printing.nix
@@ -37,10 +39,6 @@
     packages = with pkgs; [
       terminus_font
     ];
-  };
-
-  services.openssh = {
-    enable = false;
   };
 
   # ------------------------------------------------------------

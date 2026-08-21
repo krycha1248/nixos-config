@@ -1,5 +1,20 @@
 { pkgs, ... }:
 
+let
+  powerProfileSync = pkgs.writeShellScript "power-profile-sync" ''
+    online=""
+    for f in /sys/class/power_supply/*/online; do
+      v="$(cat "$f" 2>/dev/null)" && [ -n "$v" ] && online="$v" && break
+    done
+
+    if [ "$online" = "1" ]; then
+      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
+    else
+      ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver
+    fi
+  '';
+in
+
 {
   # ------------------------------------------------------------
   # Power management
@@ -10,6 +25,24 @@
 
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
+
+  systemd.services.power-profile-sync = {
+    description = "Set power profile based on AC state";
+
+    wantedBy = [
+      "multi-user.target"
+      "suspend.target"
+    ];
+    after = [
+      "multi-user.target"
+      "suspend.target"
+    ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = powerProfileSync;
+    };
+  };
 
   services.udev.extraRules = ''
     SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="power-profile-ac.service"

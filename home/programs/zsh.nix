@@ -88,22 +88,31 @@
           "sudo nix-collect-garbage -d";
       };
 
-    initContent = ''
-      export TERM="xterm-256color"
+    initContent = lib.mkMerge [
+      (lib.mkOrder 400 ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      '')
 
-      ZSH_DISABLE_COMPFIX=true
+      (lib.mkOrder 500 ''
+        ZSH_DISABLE_COMPFIX=true
 
-      ENABLE_CORRECTION="true"
+        ENABLE_CORRECTION="true"
 
-      export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color?
-      [Yes, No, Abort, Edit] "
+        COMPLETION_WAITING_DOTS="true"
 
-      COMPLETION_WAITING_DOTS="true"
+        export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? [Yes, No, Abort, Edit] "
+      '')
 
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      ${lib.optionalString (config.home.username == "krystian") ''
-        cowsay "Deploying directly to production builds character."; echo
-      ''}
-    '';
+      (lib.mkOrder 1000 ''
+        export TERM="xterm-256color"
+
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        ${lib.optionalString (config.home.username == "krystian") ''
+          cowsay "Deploying directly to production builds character."; echo
+        ''}
+      '')
+    ];
   };
 }

@@ -42,7 +42,7 @@ button:focus {
 /* LOCK */
 
 #lock {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/lock_white.png");
+    background-image: url("icons/lock_white.png");
 }
 
 #lock:hover,
@@ -54,7 +54,7 @@ button:focus {
 /* SUSPEND */
 
 #suspend {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/suspend_white.png");
+    background-image: url("icons/suspend_white.png");
 }
 
 #suspend:hover,
@@ -66,7 +66,7 @@ button:focus {
 /* HIBERNATE */
 
 #hibernate {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/hibernate_white.png");
+    background-image: url("icons/hibernate_white.png");
 }
 
 #hibernate:hover,
@@ -78,7 +78,7 @@ button:focus {
 /* LOGOUT */
 
 #logout {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/logout_white.png");
+    background-image: url("icons/logout_white.png");
 }
 
 #logout:hover,
@@ -90,7 +90,7 @@ button:focus {
 /* REBOOT */
 
 #reboot {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/reboot_white.png");
+    background-image: url("icons/reboot_white.png");
 }
 
 #reboot:hover,
@@ -102,7 +102,7 @@ button:focus {
 /* SHUTDOWN */
 
 #shutdown {
-    background-image: url("/home/krystian/nixos/home/config/wlogout/icons/shutdown_white.png");
+    background-image: url("icons/shutdown_white.png");
 }
 
 #shutdown:hover,

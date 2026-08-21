@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hyprdynamicmonitors, ... }:
 
 {
   systemd.user.services.waybar = {
@@ -99,7 +99,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.hyprdynamicmonitors}/bin/hyprdynamicmonitors run";
+      ExecStart = "${hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/hyprdynamicmonitors run";
       Restart = "on-failure";
       RestartSec = 2;
     };
