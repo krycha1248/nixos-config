@@ -16,6 +16,7 @@
     ./desktop/thunar.nix
     ./desktop/obs.nix
     ./desktop/virtualisation.nix
+    ./desktop/android.nix
     ./system-packages.nix
     ./boot.nix
     ./networking.nix

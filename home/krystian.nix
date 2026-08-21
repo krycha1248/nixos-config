@@ -11,6 +11,7 @@
     ./programs/apps.nix
     ./programs/cli.nix
     ./programs/devops.nix
+    ./programs/android.nix
     ./programs/desktop.nix
     ./programs/media.nix
     ./programs/hyprdynamicmonitors.nix

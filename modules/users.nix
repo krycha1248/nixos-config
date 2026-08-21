@@ -11,6 +11,7 @@
       "networkmanager"
       "vboxusers"
       "libvirtd"
+      "kvm"
     ];
 
     shell = pkgs.zsh;
