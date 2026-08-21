@@ -74,7 +74,7 @@ in {
           # script (which would disable file indexing).
           postFixup = ''
             for f in "$out/share/urbackup/scripts/list" "$out/share/urbackup/scripts/list_incr"; do
-              sed -i 's|^\. "ut/etc/\(.*\)"$|[ -f "/etc/\1" ] \&\& . "/etc/\1" || true|' "$f"
+              sed -i 's@^\. "ut/etc/\(.*\)"$@[ -f "/etc/\1" ] \&\& . "/etc/\1" || true@' "$f"
             done
           '';
         });
