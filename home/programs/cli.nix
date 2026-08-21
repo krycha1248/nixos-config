@@ -17,9 +17,5 @@
     goose-cli
     opencode
     bitwarden-cli
-
-    # Archives
-    unzip
-    zip
   ];
 }
