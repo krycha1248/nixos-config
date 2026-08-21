@@ -3,7 +3,17 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/urbackup-client.nix
   ];
+
+  services.urbackup-client = {
+    enable = true;
+
+    # Ports open only in the home WiFi, scoped to the server's IP.
+    openFirewall = false;
+    firewallWifiNetworks = [ "Dom_15_srv" ];
+    serverIp = "192.168.1.24";
+  };
 
   # ------------------------------------------------------------
   # Hostname
