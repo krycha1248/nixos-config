@@ -89,12 +89,6 @@
       };
 
     initContent = lib.mkMerge [
-      (lib.mkOrder 400 ''
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '')
-
       (lib.mkOrder 500 ''
         ZSH_DISABLE_COMPFIX=true
 
@@ -109,8 +103,14 @@
         export TERM="xterm-256color"
 
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
         ${lib.optionalString (config.home.username == "krystian") ''
-          cowsay "Deploying directly to production builds character."; echo
+          _nixos_cowsay_once() {
+            add-zsh-hook -d precmd _nixos_cowsay_once
+            cowsay "Deploying directly to production builds character."
+            echo
+          }
+          add-zsh-hook precmd _nixos_cowsay_once
         ''}
       '')
     ];
