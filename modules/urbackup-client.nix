@@ -121,25 +121,30 @@ in {
               NMCLI="${pkgs.networkmanager}/bin/nmcli"
 
               NETWORKS=(${lib.concatStringsSep " " (map (n: "'${n}'") cfg.firewallWifiNetworks)})
-              SRC_ARGS=${lib.optionalString (cfg.serverIp != null) "-s ${cfg.serverIp}"}
-              RULES=${lib.concatStringsSep " " (map (p: "'${p}'") [
-                "udp --dport 35622"
-                "tcp --dport 35414"
-                "tcp --dport 35621"
-                "tcp --dport 35623"
-              ])}
+              SRC_ARGS="${lib.optionalString (cfg.serverIp != null) "-s ${cfg.serverIp}"}"
+              PORTS=(${lib.concatStringsSep " " (map (p: "'${p}'") [
+                "udp/35622"
+                "tcp/35414"
+                "tcp/35621"
+                "tcp/35623"
+              ])})
 
               add_rules() {
-                local r
-                for r in ''${RULES[@]}; do
-                  $IPTABLES -C INPUT -i "$IFACE" $SRC_ARGS -p $r -j ACCEPT 2>/dev/null || $IPTABLES -I INPUT 1 -i "$IFACE" $SRC_ARGS -p $r -j ACCEPT
+                local spec proto dport
+                for spec in "''${PORTS[@]}"; do
+                  proto=''${spec%%/*}
+                  dport=''${spec##*/}
+                  $IPTABLES -C INPUT -i "$IFACE" $SRC_ARGS -p "$proto" --dport "$dport" -j ACCEPT 2>/dev/null \
+                    || $IPTABLES -I INPUT 1 -i "$IFACE" $SRC_ARGS -p "$proto" --dport "$dport" -j ACCEPT
                 done
               }
 
               remove_rules() {
-                local r
-                for r in ''${RULES[@]}; do
-                  while $IPTABLES -D INPUT -i "$IFACE" $SRC_ARGS -p $r -j ACCEPT 2>/dev/null; do :; done
+                local spec proto dport
+                for spec in "''${PORTS[@]}"; do
+                  proto=''${spec%%/*}
+                  dport=''${spec##*/}
+                  while $IPTABLES -D INPUT -i "$IFACE" $SRC_ARGS -p "$proto" --dport "$dport" -j ACCEPT 2>/dev/null; do :; done
                 done
               }
 
