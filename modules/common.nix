@@ -8,6 +8,7 @@
   imports = [
     ./desktop/hyprland.nix
     ./desktop/graphics.nix
+    ./desktop/gaming.nix
     ./desktop/hardware.nix
     ./desktop/power.nix
     ./desktop/bluetooth.nix
