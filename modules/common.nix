@@ -24,6 +24,7 @@
     ./home-manager.nix
     ./nix-settings.nix
     ./borgbackup.nix
+    ./snapper.nix
   ];
 
   # ------------------------------------------------------------
