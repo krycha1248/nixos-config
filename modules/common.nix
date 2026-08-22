@@ -23,6 +23,7 @@
     ./users.nix
     ./home-manager.nix
     ./nix-settings.nix
+    ./borgbackup.nix
   ];
 
   # ------------------------------------------------------------
