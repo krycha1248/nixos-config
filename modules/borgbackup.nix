@@ -36,7 +36,9 @@ in
   services.borgbackup.jobs.home = {
     paths = [ "/home/krystian" ];
 
-    exclude = [ "re:(^|/)\\." ];
+    exclude = [
+      "re:(^|/)\\.cache(/|$)"
+    ];
 
     repo = "ssh://${borgUser}@${borgHost}:${borgPort}/srv/borg/${host}";
 
