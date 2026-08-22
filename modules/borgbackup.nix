@@ -59,7 +59,7 @@ in
               notifyScript = pkgs.writeShellScript "borg-notify-failure" ''
                 uid=$(id -u krystian)
                 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus"
-                if /run/wrappers/bin/ping -c1 -W2 ${borgHost} >/dev/null 2>&1; then
+                if ${pkgs.iputils}/bin/ping -c1 -W2 ${borgHost} >/dev/null 2>&1; then
                   ${pkgs.libnotify}/bin/notify-send \
                     -u critical -a BorgBackup -t 0 \
                     "Backup failed" \
@@ -75,6 +75,25 @@ in
             "${notifyScript} %i";
         };
       };
+
+      "borg-notify-success@" = {
+        description = "Notify about successful backup (%i)";
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart =
+            let
+              notifyScript = pkgs.writeShellScript "borg-notify-success" ''
+                uid=$(id -u krystian)
+                export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus"
+                ${pkgs.libnotify}/bin/notify-send \
+                  -u normal -a BorgBackup -t 10000 \
+                  "Backup completed" \
+                  "$1 finished successfully" || true
+              '';
+            in
+            "${notifyScript} %i";
+        };
+      };
     }
     // builtins.listToAttrs (
       builtins.map
@@ -82,11 +101,14 @@ in
           name = "borgbackup-job-${name}";
           value = {
             onFailure = [ "borg-notify-failure@%n.service" ];
+            onSuccess = [ "borg-notify-success@%n.service" ];
+
+            serviceConfig.TimeoutStartSec = "2h";
 
             preStart = lib.mkBefore ''
               echo "Waiting for network (${borgHost})..."
               tries=60
-              until /run/wrappers/bin/ping -c1 -W2 ${borgHost} >/dev/null; do
+              until ${pkgs.iputils}/bin/ping -c1 -W2 ${borgHost} >/dev/null; do
                 tries=$((tries - 1))
                 if [ "$tries" -le 0 ]; then
                   echo "Network unreachable: ${borgHost}" >&2
