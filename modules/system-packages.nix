@@ -12,6 +12,15 @@
     alsa-utils
     wayland-utils
     wl-clipboard
-    simple-scan
+
+    (ocrmypdf.override {
+      tesseract = tesseract.override {
+        enableLanguages = [
+          "eng"
+          "pol"
+          "osd"
+        ];
+      };
+    })
   ];
 }

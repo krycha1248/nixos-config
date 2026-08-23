@@ -14,5 +14,17 @@
       inputstream-adaptive
     ]))
     zathura
+    simple-scan
+    onlyoffice-desktopeditors
+
+    (gimagereader.override {
+      tesseract = tesseract.override {
+        enableLanguages = [
+          "eng"
+          "pol"
+          "osd"
+        ];
+      };
+    })
   ];
 }
