@@ -6,7 +6,17 @@
 
     drivers = with pkgs; [
       gutenprint
-      hplip
+      hplipWithPlugin
+    ];
+  };
+
+  # Scanner support (SANE)
+  hardware.sane = {
+    enable = true;
+
+    extraBackends = with pkgs; [
+      hplipWithPlugin # HP (hpaio)
+      sane-airscan # driverless scanning over network (eSCL/WSD)
     ];
   };
 

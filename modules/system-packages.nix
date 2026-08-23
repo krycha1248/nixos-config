@@ -12,5 +12,6 @@
     alsa-utils
     wayland-utils
     wl-clipboard
+    simple-scan
   ];
 }

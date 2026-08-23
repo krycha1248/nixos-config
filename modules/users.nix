@@ -12,6 +12,8 @@
       "vboxusers"
       "libvirtd"
       "kvm"
+      "scanner"
+      "lp"
     ];
 
     shell = pkgs.zsh;
