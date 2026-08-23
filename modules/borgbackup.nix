@@ -43,13 +43,14 @@ in
       "re:(^|/)\\.nv(/|$)"
       "re:(^|/)\\.local/share/Trash(/|$)"
 
-      # Steam — games and client are re-downloadable
-      "re:^/home/krystian/\\.steam(/|$)"
-      "re:^/home/krystian/\\.local/share/Steam(/|$)"
+      # NOTE: borg matches patterns against paths WITHOUT the leading slash,
+      # so anchors must be "^home/..." not "^/home/..."
+      "re:(^|/)\\.steam(/|$)"
+      "re:^home/krystian/\\.local/share/Steam(/|$)"
 
       # VMs, emulators and container storage
-      "re:^/home/krystian/VirtualBox VMs(/|$)"
-      "re:^/home/krystian/Android(/|$)"
+      "re:^home/krystian/VirtualBox VMs(/|$)"
+      "re:^home/krystian/Android(/|$)"
       "re:(^|/)\\.android/(avd|cache|build-cache)(/|$)"
       "re:(^|/)\\.local/share/docker(/|$)"
 
