@@ -36,8 +36,41 @@ in
   services.borgbackup.jobs.home = {
     paths = [ "/home/krystian" ];
 
+    # Home-wide backup minus everything regenerable
     exclude = [
+      # System caches & trash
       "re:(^|/)\\.cache(/|$)"
+      "re:(^|/)\\.nv(/|$)"
+      "re:(^|/)\\.local/share/Trash(/|$)"
+
+      # Steam — games and client are re-downloadable
+      "re:^/home/krystian/\\.steam(/|$)"
+      "re:^/home/krystian/\\.local/share/Steam(/|$)"
+
+      # VMs, emulators and container storage
+      "re:^/home/krystian/VirtualBox VMs(/|$)"
+      "re:^/home/krystian/Android(/|$)"
+      "re:(^|/)\\.android/(avd|cache|build-cache)(/|$)"
+      "re:(^|/)\\.local/share/docker(/|$)"
+
+      # Dev artifacts
+      "re:(^|/)node_modules(/|$)"
+      "re:(^|/)\\.gradle(/|$)"
+      "re:(^|/)\\.npm(/|$)"
+      "re:(^|/)\\.dotnet(/|$)"
+      "re:(^|/)\\.local/share/pnpm/store(/|$)"
+
+      # Electron app caches (Chrome, VSCode, Discord, Teams...)
+      "re:(^|/)(Cache|Code Cache|GPUCache|GPUCacheData|ShaderCache|GrShaderCache|DawnGraphiteCache|DawnWebGPUCache|Shared Dictionary)(/|$)"
+      "re:(^|/)\\.config/Code/(CachedExtensionVSIXs|CachedData)(/|$)"
+      "re:(^|/)google-chrome/Default/Extensions(/|$)"
+      "re:(^|/)google-chrome/.*/Service Worker/CacheStorage(/|$)"
+      "re:(^|/)google-chrome/extensions_crx_cache(/|$)"
+      "re:(^|/)google-chrome/component_crx_cache(/|$)"
+      "re:(^|/)google-chrome/optimization_guide_model_store(/|$)"
+
+      # Misc regenerable files
+      "re:(^|/)\\.zcompdump[^/]*$"
     ];
 
     repo = "ssh://${borgUser}@${borgHost}:${borgPort}/srv/borg/${host}";
