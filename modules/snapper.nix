@@ -4,6 +4,7 @@
     persistentTimer = true;
 
     filters = builtins.concatStringsSep "\n" [
+      "/tmp"
       "/var/log"
       "/var/lib/systemd/coredump"
       "/var/tmp"
