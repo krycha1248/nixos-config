@@ -12,5 +12,9 @@
 
     # Docker
     lazydocker
+
+    # Nodejs
+    nodejs
+    pnpm
   ];
 }
