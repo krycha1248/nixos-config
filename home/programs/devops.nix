@@ -16,5 +16,8 @@
     # Nodejs
     nodejs
     pnpm
+
+    # Cloudflare
+    wrangler
   ];
 }
