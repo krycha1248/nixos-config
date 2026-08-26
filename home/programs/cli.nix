@@ -14,7 +14,6 @@
     fastfetch
     tree
     cowsay
-    goose-cli
     opencode
     bitwarden-cli
   ];
