@@ -48,17 +48,6 @@
   # ------------------------------------------------------------
   # Others
   # ------------------------------------------------------------
-
-  # Fix nsncd 6-second restart loop during initrd → userspace transition
-  # nsncd with NSNCD_HANDOFF_TIMEOUT=10 + Restart=always causes a 6s
-  # restart cycle that delays nss-user-lookup.target
-  systemd.services.nscd = {
-    serviceConfig = {
-      Environment = pkgs.lib.mkForce [ "NSNCD_HANDOFF_TIMEOUT=2" ];
-      Restart = pkgs.lib.mkForce "on-failure";
-    };
-  };
-
   documentation.man.cache.enable = true;
 
   services.udisks2.enable = true;
