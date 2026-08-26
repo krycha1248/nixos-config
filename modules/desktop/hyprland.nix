@@ -27,6 +27,7 @@ in {
 
   services.greetd = {
     enable = true;
+    greeterManagesPlymouth = true;
 
     settings = {
       default_session = {
@@ -38,6 +39,7 @@ in {
   };
 
   systemd.services.greetd.serviceConfig = {
+    Type = pkgs.lib.mkForce "simple";
     StandardInput = "tty";
     StandardOutput = "journal";
     StandardError = "journal";
