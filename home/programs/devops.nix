@@ -19,5 +19,8 @@
 
     # Cloudflare
     wrangler
+
+    # Cursor
+    code-cursor
   ];
 }
