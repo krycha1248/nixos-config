@@ -3,10 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    #../../modules/urbackup-client.nix
   ];
-
-  #services.urbackup-client.enable = true;
 
   # ------------------------------------------------------------
   # Hostname
