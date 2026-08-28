@@ -22,5 +22,6 @@
 
     # Cursor
     code-cursor
+    opencode-desktop
   ];
 }
