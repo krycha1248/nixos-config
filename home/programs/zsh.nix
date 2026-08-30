@@ -55,10 +55,10 @@
         ns =
           "sudo nixos-rebuild switch --flake ~/nixos#${host}";
 
-        nst =
+        nt =
           "sudo nixos-rebuild test --flake ~/nixos#${host}";
 
-        nsb =
+        nb =
           "sudo nixos-rebuild boot --flake ~/nixos#${host}";
 
         # ------------------------------------------------------------
@@ -79,6 +79,12 @@
           "nix flake update --flake ~/nixos"
           + " && "
           + "sudo nixos-rebuild switch --flake ~/nixos#${host}";
+
+
+        nbu =
+          "nix flake update --flake ~/nixos"
+          + " && "
+          + "sudo nixos-rebuild boot --flake ~/nixos#${host}";
 
         # ------------------------------------------------------------
         # Garbage collection
