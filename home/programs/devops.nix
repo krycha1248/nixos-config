@@ -23,5 +23,8 @@
     # Cursor
     code-cursor
     opencode-desktop
+
+    # Azure
+    azure-cli
   ];
 }
