@@ -9,6 +9,7 @@
     usbutils
     unzip
     zip
+    _7zz
     alsa-utils
     wayland-utils
     wl-clipboard
