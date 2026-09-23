@@ -12,4 +12,12 @@
 
     nixpkgs.config.allowUnfree = true;
   };
+
+  home-manager.users.guest = {
+    imports = [
+      ../home/guest.nix
+    ];
+
+    nixpkgs.config.allowUnfree = true;
+  };
 }

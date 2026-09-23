@@ -20,6 +20,16 @@
     shell = pkgs.zsh;
   };
 
+  users.users.guest = {
+    isNormalUser = true;
+
+    description = "Guest";
+
+    extraGroups = [];
+
+    shell = pkgs.bash;
+  };
+
   users.users.root = {
     shell = pkgs.zsh;
   };
