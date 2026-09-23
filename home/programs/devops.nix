@@ -22,7 +22,7 @@
 
     # Cursor
     code-cursor
-    opencode-desktop
+    #opencode-desktop
 
     # Azure
     azure-cli
