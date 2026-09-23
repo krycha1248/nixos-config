@@ -14,4 +14,9 @@
   security.pki.certificateFiles = [
     ../certs/wlodek-lan-root-ca.crt
   ];
+
+  services.netbird.clients.wt0 = {
+    ui.enable = true;
+    port = 51821;
+  };
 }

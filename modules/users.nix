@@ -14,6 +14,7 @@
       "kvm"
       "scanner"
       "lp"
+      "netbird-wt0"
     ];
 
     shell = pkgs.zsh;
