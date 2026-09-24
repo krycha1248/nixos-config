@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -29,6 +30,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       lanzaboote,
       stylix,
@@ -47,6 +49,11 @@
           specialArgs = {
             host = name;
             inherit hyprdynamicmonitors;
+
+            unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
 
           modules = [
