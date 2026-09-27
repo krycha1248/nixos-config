@@ -5,6 +5,7 @@
     sbctl
     cifs-utils
     curl
+    nettools
     wget
     usbutils
     unzip
