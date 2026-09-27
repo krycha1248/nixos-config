@@ -22,6 +22,10 @@
   home.username = "krystian";
   home.homeDirectory = "/home/krystian";
 
+  wayland.windowManager.hyprland = {
+    systemd.enable = false;
+  };
+
   # ------------------------------------------------------------
   # Stylix
   # ------------------------------------------------------------
@@ -78,6 +82,7 @@
 
   home.sessionVariables = {
     QT_WAYLAND_DISABLE_WINDOWDECORATION=1;
+    NIXOS_OZONE_WL=1;
   };
 
   xdg.configFile."uwsm/env".source =
