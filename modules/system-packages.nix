@@ -6,6 +6,7 @@
     cifs-utils
     curl
     nettools
+    bind
     wget
     usbutils
     unzip
