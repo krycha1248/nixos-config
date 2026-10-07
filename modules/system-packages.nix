@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     sbctl
+    killall
     cifs-utils
     curl
     nettools
