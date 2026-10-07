@@ -41,6 +41,11 @@
     let
       system = "x86_64-linux";
 
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       mkHost =
         name: hostPath:
         nixpkgs.lib.nixosSystem {
@@ -48,12 +53,7 @@
 
           specialArgs = {
             host = name;
-            inherit hyprdynamicmonitors;
-
-            unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            inherit hyprdynamicmonitors unstable;
           };
 
           modules = [
@@ -67,7 +67,7 @@
             {
               home-manager.extraSpecialArgs = {
                 host = name;
-                inherit hyprdynamicmonitors;
+                inherit hyprdynamicmonitors unstable;
               };
 
               home-manager.sharedModules = [
