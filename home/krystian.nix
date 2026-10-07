@@ -15,6 +15,7 @@
     ./programs/desktop.nix
     ./programs/media.nix
     ./programs/hyprdynamicmonitors.nix
+    ./programs/gaming.nix
 
     ./services/desktop.nix
   ];
