@@ -1,7 +1,7 @@
 { pkgs, unstable, ... }:
 
 {
-  #boot.kernelPackages = unstable.linuxPackages_zen;
+  boot.kernelPackages = unstable.linuxPackages_zen;
 
   boot.loader.systemd-boot.enable = false;
 
