@@ -17,14 +17,14 @@
     wayland-utils
     wl-clipboard
 
-    (ocrmypdf.override {
-      tesseract = tesseract.override {
-        enableLanguages = [
-          "eng"
-          "pol"
-          "osd"
-        ];
-      };
-    })
+    #(ocrmypdf.override {
+    #  tesseract = tesseract.override {
+    #    enableLanguages = [
+    #      "eng"
+    #      "pol"
+    #      "osd"
+    #    ];
+    #  };
+    #})
   ];
 }
