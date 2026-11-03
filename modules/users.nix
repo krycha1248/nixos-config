@@ -15,6 +15,7 @@
       "scanner"
       "lp"
       "netbird-wt0"
+      "dialout"
     ];
 
     shell = pkgs.zsh;

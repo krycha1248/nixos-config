@@ -29,5 +29,6 @@
 
     veracrypt
     openjdk21
+    arduino-ide
   ];
 }

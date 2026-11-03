@@ -16,5 +16,6 @@
     cowsay
     opencode
     bitwarden-cli
+    python3
   ];
 }
