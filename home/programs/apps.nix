@@ -6,7 +6,7 @@
     vscode
     thunderbird
     teams-for-linux
-    libreoffice-still
+    libreoffice
     discord
     gimp
     winbox
